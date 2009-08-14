@@ -1,0 +1,164 @@
+body{
+	background-color:#ffffff;
+	color:#57585a;
+	padding:0px;
+	margin:0px;
+	width:100%;
+	font-family:Arial;
+	font-size:10px;
+	text-align:center;
+}
+form{
+	padding:0px;
+	margin:0px;
+}
+input{
+	font-size:10px;
+}
+select{
+	font-size:10px;
+}
+#wrapper{
+	padding:0px;
+	margin:0px;
+	width:850px;
+	border:1px solid #57585a;
+	text-align:center;
+}
+#aztop{
+	padding:0px;
+	margin:0px;
+	width:850px;
+	height:80px;
+	background-color:#c50009;
+	color:#ffffff;
+	text-align:left;
+}
+#vobtop{
+	padding:0px;
+	margin:0px;
+	width:850px;
+	height:30px;
+	background-color:#b00736;
+	color:#ffffff;
+	text-align:center;
+}
+#login{
+	padding:0px;
+	margin:0px;
+	width:850px;
+	height:440px;
+	text-align:center;
+}
+.loginform{
+	width:220px;
+	margin:0px;
+	text-align:left;
+	clear:both;
+}
+.flleft{
+	float:left;
+}
+.flright{
+	float:right;
+}
+#foot{
+	padding:0px;
+	margin:0px;
+	width:850px;
+	height:20px;
+	background-color:#ebebeb;
+	border-top:1px solid #57585a;
+	text-align:left;
+	clear:both;
+}
+h1{
+	margin:0px;
+	font-size:24px;
+}
+h2{
+	margin:0px;
+	font-size:14px;
+}
+.spacer{
+	font-size:0px;
+}
+.toplink{
+	color:#ffffff;
+}
+.footlink{
+	color:#57585a;
+}
+a{
+	text-decoration:none;
+	color:#57585a;
+}
+a:link {
+}
+a:visited {
+}
+a:hover {
+	text-decoration:underline;
+}
+a:active {
+}
+#middWrapp{
+	padding:0px;
+	margin:0px;
+	width:850px;
+	/*height:450px;*/
+	background-color:#ffffff;
+	clear:both;
+}
+#jezicakCell{
+	width:180px;
+	/*height:440px;*/
+	padding:0px;
+	margin:5px;
+	background-color:#ffffff;
+	float:right;
+	border:1px solid #57585a;
+}
+#menudiv{
+	width:190px;
+	/*height:440px;*/
+	padding:0px;
+	margin:5px;
+	float:left;
+	text-align:left;
+}
+#contdiv{
+	width:630px;
+	/*height:440px;*/
+	padding:0px;
+	margin:5px;
+	background-color:#ffffff;
+	float:right;
+	border:1px solid #57585a;
+}
+.menuTitle{
+	font-size:11px;
+	font-weight:bold;
+}
+.menuItem{
+	color:#57585a;
+}
+.leftLink{
+	font-size:11px;
+	color:#57585a;
+}
+.leftLinkLite{
+	font-size:11px;
+	color:#bbbbbb;
+}
+.leftLinkHead{
+	font-size:12px;
+	color:#222222;
+	font-weight:bold;
+}
+.redTxt{
+	color:#b00736;
+}
+.loginput{
+	width:100px;
+}

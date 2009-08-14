@@ -1,0 +1,111 @@
+body{
+	background-color:#ebebeb;
+	color:#57585a;
+	padding:5px 5px 5px 5px;
+	margin:0px;
+	font-family:Arial;
+	font-size:10px;
+	text-align:center;
+}
+form{
+	padding:0px;
+	margin:0px;
+}
+input{
+	font-size:10px;
+	width:360px;
+}
+select{
+	font-size:10px;
+}
+textarea{
+	font-family:Arial;
+	font-size:10px;
+}
+table{
+	font-family:Arial;
+	font-size:10px;
+}
+.spacer{
+	font-size:0px;
+}
+.footlink{
+	color:#57585a;
+}
+a{
+	font-size:10px;
+	text-decoration:none;
+}
+a:link {
+}
+a:visited {
+}
+a:hover {
+	text-decoration:underline;
+}
+a:active {
+}
+.pgsitem{
+	width:600px;
+	clear:both;
+	text-align:right;
+}
+.pgsleft{
+	width:140px;
+	text-align:left;
+	float:left;
+	padding-top:5px;
+}
+.pgsright{
+	width:460px;
+	text-align:left;
+	float:right;
+}
+.pgsleftprc{
+	width:360px;
+	text-align:left;
+	float:left;
+	padding-top:5px;
+}
+.pgsrightprc{
+	width:240px;
+	text-align:left;
+	float:right;
+}
+.prcinput{
+	font-size:10px;
+	width:100px;
+}
+input.pgsform{
+	width:335px;
+}
+select.pgsselect{
+	width:200px;
+}
+input.pgscheck{
+	width:16px;
+	margin-left:0px;
+}
+#pgsctrls{
+	width:500px;
+	text-align:left;
+}
+.pgsctrlsitem{
+	width:245px;
+	margin-top:10px;
+	text-align:left;
+	float:left;
+}
+.pgsctrlslf{
+	color:#b00000;
+	text-align:left;
+}
+.pgsctrlsrg{
+	text-align:left;
+}
+.pgsctrlsbtt{
+	width:180px;
+}
+.errorTxt{
+	color:#b00000;
+}

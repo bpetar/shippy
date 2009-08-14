@@ -1,0 +1,677 @@
+﻿<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>.:activeZ CMS</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+<div style="width:500px;">
+    <div>
+        <h1>Uputsvo za administriranje sajta</h1>
+    </div>
+	<div>
+		<h2><a name="top">Sadržaj</a></h2>
+	</div>
+	<div style="text-align:left;">
+	    <ul>
+	        <li><a href="#notes">Opšte napomene</a></li>
+	        <li><a href="#wyswyg">Tekst editor</a></li>
+	        <li>
+	            <a href="#structure">Struktura</a>
+	            <ul>
+	                <li><a href="#su">superadmin</a></li>
+	                <li><a href="#editori">editori</a></li>
+	                <li>
+	                    <a href="#tmplts">obrasci
+	                    <ul>
+	                        <li><a href="#common">Common</a></li>
+	                        <li><a href="#home">Home</a></li>
+	                        <li><a href="#confirm">Confirm</a></li>
+	                        <li><a href="#credits">Credits</a></li>
+	                        <li><a href="#currency">Currency</a></li>
+	                        <li><a href="#job">Job</a></li>
+	                        <li><a href="#jobapp">JobApplication</a></li>
+	                        <li><a href="#media">MediaForm</a></li>
+	                        <li><a href="#networktmplt">Network</a></li>
+	                        <li><a href="#newstmplt">News</a></li>
+	                        <li><a href="#popup">Popup</a></li>
+	                        <li><a href="#search">Search</a></li>
+	                        <li><a href="#sitemap">SiteMap</a></li>
+	                        <li><a href="#visits">VisitorsForm</a></li>
+	                        <li><a href="#login">LoginForm</a></li>
+	                    </ul>
+	                </li>
+	            </ul>
+	        </li>
+	        <li><a href="#crm">CRM</a></li>
+	        <li><a href="#network">Mreža</a></li>
+	        <li><a href="#news">Vesti</a></li>
+	        <li><a href="#system">Sistem</a></li>
+	        <li><a href="#stats">Statistike</a></li>
+	    </ul>
+	</div>
+	<div>
+		<h2><a name="notes">Opšte napomene</a></h2>
+	</div>
+    <div  style="text-align:left;">
+Za rad na administraciji preporučujemo da koristite Internet Explorer verziju 6 ili Firefox jer neki delovi neće raditi sa ostalim internet čitačima.
+<br/>Zavisno od administratorske uloge koja vam je dodeljena, možete imati pristup samo nekim ili svim delovima adminstracije.
+<br/>U gornjem desnom delu strane imate mogućnost izbora jezika koji ćete administrirati, npr.: 
+ako želite da administrirate neku vest na engleskom tada odaberite taj jezik.
+<br/>Ako unosite neki duži tekst, tada možete imati opcije menjanja izgleda teksta (menjanje veličine fonta, tipa fonta itd npr. kod unosa stranice) koriscenjem tekst editora integrisanog u CMS.
+Medju funkcijama za izmenu teksta imate izbor stila, tu se nalaze uobičajeni stilovi za voban sajt i 
+preporučujemo da koristitite samo njih pri pravljenju nove stranice, da bi bila u skladu sa celokupnim dizajnom sajta. 
+<br/>Za neke stavke (strane, vesti) postoji mogućnost publikovanja koju ima samo superadministrator. 
+Stavka koja nije publikovana se neće videti na sajtu sve dok je ne publikujete. 
+Stavke koje nisu publikovane će imati crveni uzvičnik sa leve strane. 
+<br/>Pored svakog polja koje treba da administrirate postoji slika sa informacijom <img src="img/i.gif" title="Ova slika služi kao pomoć pri administraciji."/>, stavite pokazivač miša preko te slike i dobićete dodatnu informaciju kako da popunite polje.<br/>
+Ako pored polja za unos slike imate tekst "Izaberi sliku" (ponegde piše dodatno "ili flash"), tada se klikom na njega otvara novi prozor. 
+Sa leve strane možete da birate biblioteku i sliku koju ćete videti u desnom delu. 
+Kada kliknete na "Odaberi" željena slika će biti postavljena u polje, ako želite da postavite (upload) sliku sa vašeg računara, 
+kliknite na dugme "Browse" i izaberite sliku sa vaseg racunara. Posle toga kliknite na dugme "Upload" i slika će se pojaviti sa desne strane.
+Ako je slika veća, ova operacija može da potraje nekoliko desetina sekundi.<br/>
+Za sve slike poželjno je da ime slike bude u skladu sa onim za šta se snima, malim slovima i bez korišćenja razmaknica (praznog mesta) u imenu. <br/>Preporucuje se da ime slike bude napisano malim slovima, uz korišćenje samo engleske abecede i brojeva u imenu (bez razmaka, koristite znak _ umesto razmaka, npr. serpa1.gif, o_nama.jpg).
+<br/>Kod polje kod kojih postoji mogućnost izbora flash animacije potrebno je odabrati odgovarajuću flash animaciju 
+(kao kada se bira slika, samo što fajl ima ekstenziju .swf) a potrebno je i definisati visinu i širinu animacije 
+(najbolje da osobu koja je pravila animaciju pitate za optimalne dimenzije za koje je animacija rađena).
+Širina flash animacije ne može preći unapred definisanu veličinu koja je ograničena širinom kolone u koju će animacija ići.
+<br/><br/>Kada postoji polje "redosled" ili "prioritet", 
+to je predviđeno za broj po kome se listaju te stvari.
+Moguće je i ponavljanje istih brojeva, računar će stavke sa istim rednim brojem izlistati jednu za drugom.
+Nije potrebno voditi računa o vrednostima i razmacima između rednih brojeva.
+<br/><br/>Za unos naših slova (ŠšÐđŽžČčĆć) tastatura treba da se prebaci na naša ili slovenačka slova (levi alt+shift ili klikom u donjem desnom delu toolbar-a, treba da piše SR (Serbian latin) ili SL a ne EN). 
+<br/><br/>Kada završite sa radom na administraciji, bilo bi dobro da se odlogujete (kliknete na logout u donjem levom delu), da ne bi neko drugi sa vašeg računara imao pristup administraciji.
+  </div>
+  <div>
+		<a href="#top">Top</a>
+	</div>
+	<div>
+		<h2><a name="wyswyg">Tekst editor</a></h2>
+	</div>
+	<div style="text-align:left;">
+	Administratori imaju mogucnost slobodnog unosenja sadrzaja na svim stranicama sajta. Da bi ti sadrzaji mogli biti formatirani koristi se text editor sa naprednim funkcija za uredjenje sadrzaja. Funcionanosti editora su kao i drugim tekst editorima (Word, ...):
+	<ul>
+		<li>bold - klikom na dugme, selektovani tekst ce biti podebljan</li>
+		<li>italic - klikom na dugme, selektovani tekst ce biti ukosen</li>
+		<li>podvuceno - klikom na dugme, selektovani tekst ce biti podvucen</li>
+		<li>poravnaj levo - klikom na dugme, selektovani tekst ce biti poravnat u levo</li>
+		<li>poravnaj centar - klikom na dugme, selektovani tekst ce biti poravnat u centar</li>
+		<li>poravnaj desno - klikom na dugme, selektovani tekst ce biti poravnat u desno</li>
+		<li>poravnaj sve - klikom na dugme, selektovani tekst ce biti poravnat i levo i desno</li>
+		<li>
+		izbor predefinisanih stilova - da bi uneti sadrzaji bili formatirani u skladu sa dizajnom sajta omoguceno je koriscenje samo odredjenih stilova.
+		<ul>
+			<li>tbl_border - se koristi za definisanje okvira tabele ili celije tabele</li>
+			<li>redbg_greybold - se koristi za definisanje polja tabele koji ce imati crvenu pozadinu i siva slova</li>
+			<li>greybg_redbold - se koristi za definisanje polja tabele koji ce imati sivu pozadinu i crvena slova</li>
+			<li>redtext - koristi se za prikazivanje teksta u crvenoj boji</li>
+			<li>bluetext - koristi se za prikazivanje teksta u plavoj boji</li>
+			<li>greytext - koristi se za prikazivanje teksta u sivoj boji</li>
+		</ul>
+		</li>
+		<li>izbor velicine fonta - selektovajem teksta i izborom odredjene velicine fonta se vrsi promena prikaza</li>
+		<li>izbor boje teksta - selektovajem teksta i izborom odredjene boje fonta se vrsi promena prikaza</li>
+		<li>izbor boje pozadine - selektovajem teksta i izborom odredjene boje pozadine se vrsi promena prikaza</li>
+		<li>cut</li>
+		<li>copy</li>
+		<li>paste</li>
+		<li>paste kao obican tekst - ubacivanje teksta iz drugog programa (word, ...) ali bez ikakvog formatiranja, kao obican tekst</li>
+		<li>paste iz word - ubacivanje teksta iz drugog programa (word, ... ) ali sa samo odredjenim formatiranjem, velicine , visina, sirina, boje se zadrzavaju, stilovi se uklanjaju</li>
+		<li>neuredjenja lista</li>
+		<li>uredjena lista</li>
+		<li>outdent</li>
+		<li>indent</li>
+		<li>undo</li>
+		<li>redo</li>
+		<li>ubaci/edit link - selektovanjem teksta ili vec definisanog linka i klikom na dugme se dobija dijalog za definisanje linka. Link se unosi u formi http://nekisajt.com ili ako je link stranica na sajtu kao /sr/nekastrana/nekadruga/ stim da treba obratiti paznju da
+		se pocne sa znakom / i da ide prvo oznaka jezika sr ili en. Takodje moze da se definise link ka nekom file-u klikom na browse i odabirom zeljenog file-a. Za link je jos potrebno odabrati da li ce se otvarati u  novom prozoru, potrebno je uneti naslov (tekst).</li>
+		<li>unlink - klikom na postojeci link i klikom na unlink se vrsi brisanje linka i kao rezultat se dobije obican tekst.</li>
+		<li>ubaci/edit anchor - selektovanjem teksta ili vec definisanog anchor-a i klikom na dugme se dobija dijalog za definisanje anchor-a. Potrebno je uneti samo naziv za anchor koji ce se koristiti kod linka koji ce voditi na anchor.</li>
+		<li>ubaci/edit sliku - selektovanjem slike i klikom na dugme ili samo klikom na dugme se otvara dijalog za definisanje slike u tekstu. Dijalog sadrzi:
+		<ul>
+			<li>url slike - koji se moze uneti direktno ili klikom na browse odabrati sliku od vec postojecih na serveru</li>
+			<li>opis slike - tekst koji se pojavljuje kada se misem predje preko slike</li>
+			<li>poravnavanje - kako ce slika biti prikazana na stranici i kako ce se prikazati tekst pored slike</li>
+			<li>dimenzije</li>
+			<li>okvir - debljina okvira u pixelima</li>
+			<li>vertikalni razmak - razmak od slike</li>
+			<li>horizontalni razmak - razmak od slike</li>
+		</ul></li>
+		<li>ocisti kod - uredjen tekst se cisti od koda za formatiranje i ostaje obican tekst</li>
+		<li>promeni html source - klikom na dugme se dobija html kod unetog sdrzaja i moguce je vrsiti promene direktno u njemu</li>
+		<li>ubaci/edit novu tebelu - klikom na dugme se ubacuje nova tabela ili menja vec postojeca ako je kliknuto na nju. Tabela se definise: brojem kolona i redova, vrednoscu za cellpadding, cellspacing, okvir, poravnanje, vrednosti za sirinu i visinu i stil tabele (tbl_border).</li>
+		<li>osobine reda - za red na koji je kliknuto je moguce vrsiti promene osobina: poravnavanje, stil, vertikalno poravnavanje, visina.</li>
+		<li>osobine celije - za celiju na koju je kliknuto je moguce vrsiti promene osobina: poravnavanje, stil (tbl_border, redbg_greybold, greybg_redbold), vertikalno poravnavanje, visina, sirina.</li>
+		<li>ubaci red ispred</li>
+		<li>ubaci red posle</li>
+		<li>obrisi red</li>
+		<li>ubaci kolonu ispred</li>
+		<li>ubaci kolonu posle</li>
+		<li>obrisi kolonu</li>
+		<li>podeli celije</li>
+		<li>spoji celije - koliko celija po koloni i redu da se spoji</li>
+		<li>ubaci horizontalni ruler</li>
+		<li>izbaci formatiranje</li>
+		<li>subscript</li>
+		<li>superscript</li>
+		<li>ubaci specijalan karakter</li>
+	</ul>
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div>
+		<h2><a name="structure">Struktura</a></h2>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="su">Superadmin</a></h2>
+		<ul>
+		<li>
+		stranice
+			<ul>
+			<li>
+			stranice osnovnog nivoa: klikom na crveni link na vrhu levog menija se dodaje stranica osnovnog nivoa. Stranica 0 nivoa se razlikuje od drugih stranica nizih nivoa
+			po tome sto se ne pojavljuje u meniju niti na stranici SiteMap. Stranice osnovnog nivoa su napravljene za specificne funkcionalnosti kao sto su: prikaz mape sajta,
+			prikaz rezultata pretrage, popup prozori za Home stranicu. Stranica 0 nivoa koja ima odabran prioritet 0 ce automatski biti smatrana za Home stranicu tako da ona treba
+			da bude i definisana prema tom obrascu.
+			</li>
+			<li>
+			struktura sajta: u levom meniju se nalazi celokupna struktura stranica. Klikom na pojedinu stranicu dobija se mogucnost njenog menjanja i vidi se razlistan podnivo stranica
+			koji pripada toj stranici. Crvenim uzvicnikom pored imena stranice se oznacava da stranica nije publikovana, a sivim uzvicnikom da nisu publikovane izmene. Ako je ime stranice
+			ispisano svetlo sivom bojom to znaci da za trenutno odabrani jezik nije definisana stranica. Klikom na ikonu <img src="img/x.gif" /> pored imena stranice se vrsi kompletno 
+			brisanje stranice iz strukture za sve jezike.
+			</li>
+			<li>
+			osnovne osobina strance: svaka stranica je definisana:
+				<ul>
+				<li>
+				nazivom koji se koristi samo u cms-u
+				</li>
+				<li>
+				imenom foldera koji ce biti kreiran na file sistemu i koji ce sadrzati stranicu
+				</li>
+				<li>
+				odabranim prioritetom kojim se definise redosled prikazivanja stranice u meniju (manja vrednost ima veci prioritet)
+				</li>
+				<li>
+				naslovom za meni koji se ispisuje u meniju i kao naslov na samoj stranici
+				</li>
+				<li>
+				odabirom da li stranica ima sadrzaj
+				</li>
+				<li>
+				odabranim obrascem prema kojem se unosi sadrzaj
+				</li>
+				<li>
+				tekstom koji ce biti stavljen u meta title tag stranice
+				</li>
+				<li>
+				tekstom koji ce biti stavljen u meta description tag stranice
+				</li>
+				<li>
+				tekstom koji ce biti stavljen u meta keywords tag stranice
+				</li>
+				</ul>
+				Klikom na dugme Unos se stranica snima u bazu i prilikom prvog definisanja stranice se kreira direktorijum pod unetim imenom. Kasnije izmene imena direktorijuma
+				nisu moguce. Napomene: ime foldera se unosi koristeci samo slova a - z, brojeve 0 - 9, znake _-. Potrebno je uneti samo ime direktorijuma, ne i celu putanju, ona
+				se automatski kreira nakon snimanja. Tekstovi za meta tagove su vec definisani sadrzajima nadstranice tako da je dovoljno dodati samo izraze za novu stranicu.
+			</li>
+			<li>
+			osnovne komande sa stranicama:
+				<ul>
+				<li>
+				prikaz sadrzaja stranice se ostvaruje klikom na dugme Sadrzaj Stranice. Otvara se obrazac za unos glavnog sadrzaja stranice. Superadmin tu ima mogucnost publikovanja
+				izmena glavnog sadrzaja.
+				</li>
+				<li>
+				kontrola vidljivosti stranice se vrsi klikom na dugme Vidljiva Stranica kada se vrsi publikovanje stranice i klikom na dugme Skrivena Stranica kada se vrsi sakrivanje
+				stranice.
+				</li>
+				<li>
+				publikovanje izmena se vrsi klikom na dugme Publikuj Izmene. Tada se publikuju i izmene glavnog sadrzaja i izmene osnovnih osobina stranice.
+				</li>
+				<li>
+				dodavanje podstranice se vrsi klikom na dugme Dodaj Stranicu.
+				</li>
+				<li>
+				brisanje stranice za odabrani jezik se vrsi klikom na dugme Obrisi Stranicu. Brise se stranica za odabrani jezik iz baze podataka i svi kreirani file-ovi i direktorijum kao i
+				sve pod stranice.
+				</li>
+				</ul>
+			</li>
+			</ul>
+		</li>
+		<li>
+		sekcije strana
+			<ul>
+			<li>
+			header: Na pocetku stranice se nalazi spisak vec definisanih header-a. Klikom na neki od njih, moguce je menjati odabrani header.
+								Svaki header se definise:
+								<ul>
+								<li>
+								nazivom koji se koristi samo u cms-u
+								</li>
+								<li>
+								slikom za logo, dimenzija visine 59px, providne ili pozadine bele (#ffffff) boje
+								</li>
+								<li>
+								slikom za pozadinu, dimenzija sirine 750px, visine 59px
+								</li>
+								<li>
+								3 linka prema stranicama na sajtu, koje se biraju pomocu select box-ova
+								</li>
+								<li>
+								tekstom za polje za pretragu, koji objasnjava korisniku sta treba tu da unese
+								</li>
+								<li>
+								linkom ka stranici na kojoj se prikazuju rezultati pretrage (stranica definisana prema obrascu 'Search')
+								</li>
+								<li>
+								tekstom za title tag za dugme za pretragu
+								</li>
+								</ul>
+								Klikom na dugme "Generisi header" se podaci snimaju u bazu podataka i generise se file pod imenom header_ID.php u direktorijumu za trenutno odabrani jezik.
+								Napomena: prilikom izbora linka ka stranicama znakom uzvika "!" su obelezene stranice koje nisu publikovane.
+			</li>
+			<li>
+			meni: Meni se automatski regenerise prilikom svakog definisanja nove stranice ili publikovanja izmena vec postojecih stranica. Klikom na dugme
+							"Regenerisi meni" administrator moze da regenerise meni u slucaju da je doslo do greske prilikom automatskog regenrisanja.
+			</li>
+			<li>
+			footer: Footer se definise:
+								<ul>
+								<li>
+								3 linka prema straicama na sajtu, koje se biraju pomocu select box-ova
+								</li>
+								<li>
+								textom za copyright
+								</li>
+								<li>
+								linkom ka stranci koja sadrzi text o copyright-u
+								</li>
+								</ul>
+								Klikom na dugme "Generisi footer" se podaci snimaju u bazu podataka i generise se file pod imenom footer.php u direktorijumu za trenutno odabrani jezik.
+			</li>
+			<li>
+			Download-links: Na pocetku stranice se nalazi spisak vec definisanih link-ova. Klikom na neki od njih, moguce je menjati odabrani link.
+										 Svaki link se definise:
+										 <ul>
+										 <li>
+										 nazivom koji se koristi samo u cms-u
+										 </li>
+										 <li>
+										 slikom dimenzija visine 15px, providne ili pozadine sive (#dedede) boje
+										 </li>
+										 <li>
+										 tekstom za title tag odabrane slike
+										 </li>
+										 <li>
+										 link-om, koji moze da vodi na neki pdf (doc, xsl, ...) file na sajtu ili na neki drugi sajt
+										 </li>
+										 <li>
+										 tekstom za link (sto kraci tekst, 1 ili 2 reci)
+										 </li>
+										 <li>
+										 odabirom da li se link otvara u novom prozoru ili u vec postojecem
+										 </li>
+										 <li>
+										 prioritetom/redosledom prikazivanja u odnosu na druge definisane linkove (manji broj ima veci prioritet)
+										 </li>
+										 </ul>
+										 Klikom na dugme "Generisi Download-link" se podaci snimaju u bazu podataka i generise se file pod imenom down_ID.php u direktorijumu za trenutno odabrani jezik.
+										 Napomena: Nije obavezno uneti i sliku i tekst za link, dovoljno je da je link definisan ili tekstom ili slikom a moze i sa oba. Unosenje samog linka mora biti u obliku http://www.nekidomain.com/neka_strana... ili za file na sajtu moze biti i u obliku /files/pdf/...
+			</li>
+			<li>
+			Cross-links: Na pocetku stranice se nalazi spisak vec definisanih link-ova. Klikom na neki od njih, moguce je menjati odabrani link.
+										 Svaki link se definise:
+										 <ul>
+										 <li>
+										 nazivom koji se koristi samo u cms-u
+										 </li>
+										 <li>
+										 slikom ili flash animacijom dimenzija širine do 149px, providne ili pozadine sive (#dedede) boje (slika ili flash nisu obavezni)
+										 </li>
+										 <li>
+										 širinom i visinom flash animacije. Flash animacija mora u sebi da ima "ugrađen" link na željenu stranu (da bi se klikom na nju otvorila željena strana).
+										 </li>
+										 <li>
+										 tekstom za title tag odabrane slike
+										 </li>
+										 <li>
+										 link-om, koji moze da vodi na neku stranu na sajtu ili na neki drugi sajt
+										 </li>
+										 <li>
+										 tekstom za link
+										 </li>
+										 <li>
+										 odabirom da li se link otvara u novom prozoru ili u već postojećem
+										 </li>
+										 <li>
+										 prioritetom/redosledom prikazivanja u odnosu na druge definisane linkove (manji broj ima veci prioritet)
+										 </li>
+										 </ul>
+										 Klikom na dugme "Generisi Cros-link" se podaci snimaju u bazu podataka i generise se file pod imenom cross_ID.php u direktorijumu za trenutno odabrani jezik.
+										 Napomena: Nije obavezno uneti i sliku i tekst za link, dovoljno je da je link definisan ili tekstom ili slikom. Unosenje samog linka mora biti u obliku http://www.nekidomain.com/neka_strana... ili za stranice na sajtu moze biti i u obliku /sr/nekastrana/nekadruga/...
+			</li>
+			<li>
+			Converter: Converter se definise:
+									 <ul>
+									 <li>
+									 tekstom za naslov
+									 </li>
+									 <li>
+									 tekstom za rec 'iznos'
+									 </li>
+									 <li>
+									 tekstom za frazu 'iz valute'
+									 </li>
+									 <li>
+									 tekstom za frazu 'u valutu'
+									 </li>
+									 <li>
+									 tekstom za title tag za dugme za konverziju
+									 </li>
+									 <li>
+									 4 valute koje se biraju iz skupa svih definisanih valuta
+									 </li>
+									 </ul>
+									 Klikom na dugme "Generisi konverter" se podaci snimaju u bazu podataka i generise se file pod imenom conv.php u direktorijumu za trenutno odabrani jezik.
+									 Napomena: prilikom biranja 4 valute, potrebno je obezbediti da u  direktorijumu /files/flags/ postoji file sa imenom flagKODVALUTE.gif koji predstavlja zastavicu.
+			</li>
+			</ul>
+		</li>
+		</ul>
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="editori">Editori</a></h2>
+<br/>Pomoću levog menija, prolaskom kroz strukturu, izaberite stranu za koju imate privilegije administracije i koju želite da menjate. 
+U zavisnosti prema kom obrascu je stranica definisana, imate mogućnost menjanja sadržaja. Za opšta uputstva oko unošenja sadržaja pogledati 
+prvu sekciju ovog dokumenta. Klikom na dugme "Unos" sadržaj se snima u bazu podataka tako da superadministrator posle verifikacije unetog sadržaja 
+može da ga publikuje. U slučaju da dugme za unos nije kliknuto gube se izmene odlaskom sa stranice. Klikom na link "Preview" moguće je videti konačan 
+izgled stranice sa unetim sadržajima u novom prozoru. Ukoliko taj prozor ostane otvoren, posle sledeće izmene sadržaja i klika na link "Preview", u istom prozoru će 
+biti prikazan izmenjen sadržaj. Klikom na dugme "Preview", sadržaj neće biti upisan u bazu podataka. Da bi izmenjeni sadržaj bio sačuvan, obavezno se mora kliknuti na dugme za unos.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div>
+		<h2><a name="tmplts">Obrasci</a></h2>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="common">Common</a></h2>
+<br />Obrazac za obicne stranice, koje nemaju specifican glavni sadrzaj vec editori imaju mogucnost slobodnog unosa sadrzaja pomocu tekst editora. Svi ostali obrasci pored zajednickih osobina sa ovim obrascem imaju svoje specificne osobine. Obicna stranica je definisana:
+<ul>
+    <li>header - zaglavlje: editor ima mogucnost izbora koje zaglavlje (od prethodno definisanih od strane superadmina) ce biti prikazano na stranici</li>
+    <li>slika: editor ima mogucnost izbora slike koja ce biti prikazana ispod glavnog levog menija. Slika treba da je max sirine 149px, da bude providna ili boje #f2f2f2.</li>
+    <li>sadrzaj: editor ima mogucnost slobodnog unosa glavnog sadrzaja stranice pomocu tekst editora</li>
+    <li>konverter: editor ima mogucnost izbora da li ce na stranici u desnoj koloni biti prikazan konvertor valuta i kursna lista</li>
+    <li>crosslinks: editor ima mogucnost izbora koji (od prethodno definisanih od strane superadmina) linkovi ce biti prikazani na stranici u desnoj koloni</li>
+</ul>
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="home">Home</a></h2>
+<br />Obrazac za pocetnu stranicu sajta ima iste osobine kao i obican uz dodatak odredjenih osobina. Pocetna stranica sadrzi flash ilustraciju koja se sastoji od 3 sekcije koje opisuju 3 glavne kategorije usluga. Svaka od te tri sekcije je definisana:
+<ul>
+    <li>naslovom za flash: predstavlja naslov sekcije</li>
+    <li>slikom za flash: predstavlja ilustraciju sekcije</li>
+    <li>tekstom za flash: predstavlja tekstualni sadrzaj sekcije, potrebno je da tekst bude kratak, 4 reda, u polju za unos</li>
+    <li>link za flash: predstavlja stranicu na koju ce korisnik da ode kada klikne na link u sekciji</li>
+</ul>
+Pored definisanja flash ilustracije potrebno je definisati i deo stranice koji prikazuje najnovije novosti:
+<ul>
+    <li>broj naslova vesti: predstavlja koliko naslova vesti ce biti prikazano jedan ispod drugog</li>
+    <li>'Novosti': potrebno je uneti izraz za rec Novosti</li>
+    <li>'Arhiva': potrebno je uneti za rec Arhiva</li>
+    <li>link za news: predstavlja stranicu koja prikazuje arhivu vesti i sadrzaj trenutno odabrane vesti</li>
+</ul>
+Na pocetnoj strani sajta postoji mogucnost prikazivanja popup prozora prilikom njenog otvaranja. Potrebno je da editor odabere stranicu koja je definisana prema popup obrascu da bi ona bila prikazana korisniku.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="confirm">Confirm</a></h2>
+<br />Obrazac za stranicu na kojoj korisnik potvrdjuje svoju prijavu na email listu ili brisanje sa liste ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji ce biti prikazani korisniku kao rezultat:
+<ul>
+    <li>greska sa bazom: potrebno je uneti tekst koji objasnjava korsiniku da je doslo do sistemske greske i da nije bilo moguce obraditi njegov zahtev</li>
+    <li>greska sa kodom: potrebno je uneti tekst koji objasnjava korsiniku da je doslo do greske i da nije bilo moguce proveriti njegov email sa zastitnim kodom</li>
+    <li>hvala, brisanje: potrebno je uneti tekst kojim se potvrdjuje da je njegov zahtev za brisanjem iz liste uspesno izvrsen i da uvek moze ponovo da se prijavi na listu.</li>
+    <li>hvala, potvrda: potrebno je uneti tekst kojim se potvrdjuje da je njegov zahtev za prijavom na listu uspesno izvrsen i da ce primiti email sa potvrdom i da uvek moze da se odjavi sa liste.</li>
+</ul>
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="credits">Credits</a></h2>
+<br />Obrazac za stranicu sa kreditom za kategoriju stanovnistvo ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji se pojavljuju u kreditnom kalkulatoru. Pored tekstualnih sadrzaja potrebno je da editor definise pravila izracunavanja rate kredita i kamata. Za svaki kredit mora postojati bar jedno pravilo i obavezno je uneti min iznos, max iznos, min broj rata, max broj rata i vrednost godisnje kamatne stope. U slucaju da je za pravilo bitna i neka druga osobina (depozit - uneti vrednost % ili 0, min ucesce - uneti vrednost % ili 0, klijent banke - uneti 0 ili 1) moguce je uneti i tu vrednost (ili 0) ili ostaviti prazno. Pravila se mogu unositi direktno u polje za pravila i razdvajati ih enter-om ili sto je lakse pomocu forme za unos pojedinacnog pravila.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="currency">Currency</a></h2>
+<br />Obrazac za stranicu sa kursnom listom ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji se pojavljuju u tabeli sa valutama.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="job">Job</a></h2>
+<br />Obrazac za stranicu sa oglasom za posao ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene sadrzaje koji definisu link ka stranici koja sadrzi formu za prijavu za posao:
+<ul>
+    <li>kod posla: predstavlja tekstualni kod - sifra posla koja ce biti navedena u prijavi za posao</li>
+    <li>'Prijavi se online': predstavlja tekst za izraz</li>
+    <li>stranica za prijavu: predstavlja stranicu na koju ce korisnik da ode klikom na link za prijavu i koja sadrzi formu za prijavu</li>
+</ul>
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="jobapp">JobApplication</a></h2>
+<br />Obrazac za stranicu sa formom za prijavu za posao ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji se pojavljuju u formi za prijavu.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="media">MediaForm</a></h2>
+<br />Obrazac za stranicu sa formom za prijavu za medije ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji se pojavljuju u formi za prijavu.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="networktmplt">Network</a></h2>
+<br />Obrazac za stranicu sa mrezom filijala ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese tekstualne sadrzaje za izraz za select box.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="newstmplt">News</a></h2>
+<br />Obrazac za stranicu sa arhivom vesti ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji se pojavljuju na stranici.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="popup">Popup</a></h2>
+<br />Obrazac za stranicu koja predstavlja popup prozor koji se prikazuje korisniku kada dodje na pocetnu stranicu. Stranica je definisana:
+<ul>
+    <li>sirina za prozor: predstavlja sirinu za popup prozor u px (min 101)</li>
+    <li>visina za prozor: predstavlja visinu za popup prozor u px (min 101)</li>
+    <li>sadrzaj: predstavlja sadrzaj prozora</li>
+</ul>
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="search">Search</a></h2>
+<br />Obrazac za stranicu sa formom za pretragu i rezultatima pretrage ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji se pojavljuju u formi za pretragu i prilikom ispisa rezultata.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="sitemap">Sitemap</a></h2>
+<br />Obrazac za stranicu sa mapom sajta ima iste osobine kao i obican samo bez polja za definisanje galvnog sadrzaja zato sto je sadrzaj stranice mapa linkova ka stranicama na sajtu.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="visits">VisitorsForm</a></h2>
+<br />Obrazac za stranicu sa formom za prijavu za knjigu posetilaca ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji se pojavljuju u formi za prijavu.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div style="text-align:left;">
+		<h2><a name="login">LoginForm</a></h2>
+<br />Obrazac za stranicu sa formom za login ima iste osobine kao i obican uz dodatak odredjenih osobina. Potrebno je da editor unese odredjene tekstualne sadrzaje koji se pojavljuju u formi i da odabere odredjene parametre za slanje unetih podataka na zeljenu stranicu. Stranica je dodatno definisana sa:
+        <ul>
+            <li>link za action atribut forme: editor unosi url stranice kojoj ce se poslati uneti podaci</li>
+            <li>metod: potrebno je odabrati metod slanja unetih podataka (GET ili POST)</li>
+            <li>tekst za username parametar: editor unosi tekst koji opisuje prvi parametar</li>
+            <li>naziv username parametra: editor unosi tekst koji predstavlja naziv prvog parametra</li>
+            <li>tekst za password parametar: editor unosi tekst koji opisuje drugi parametar</li>
+            <li>naziv password parametra: editor unosi tekst koji predstavlja naziv drugog parametra</li>
+            <li>tekst za submit buton: editor unosi tekst koji se pokazuje na dugmetu</li>
+            <li>naziv za hidden parametar: editor unosi tekst koji predstavlja naziv hidden parametra</li>
+            <li>vrednost hidden parametra: editor unosi tekst koji predstavlja vrednost hidden parametra</li>
+        </ul>
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div>
+		<h2><a name="crm">CRM</a></h2>
+	</div>
+	<div style="text-align:left;">
+	CRM modul sluzi za pregled informacija (o posetiocima sajta), koji su dobijene popunjavanjem odredjenih formi od strane posetioca. CRM modul ima 4 sekcije:
+	<ul>
+		<li>
+			Posetioci: u ovoj sekciji administratori imaju mogucnost pregleda informacija o korisnicima koji su se upisali u knjigu gostiju. Administratori imaju mogucnost
+			pregleda svih detaljnih infomacija, klikom na dugme (i) ili brisanja pojedinacnog posetioca, klikom na dugme (x), kao i izvoz svih informacija o svim posetiocima u 
+			jednoj tabeli na posebnoj stranici.
+		</li>
+		<li>
+			Mediji: u ovoj sekciji administratori imaju mogucnost pregleda informacija o korisnicima koji su se prijavili za dodatne informacija na stranici za medije. Administratori imaju mogucnost
+			pregleda svih detaljnih infomacija, klikom na dugme (i) ili brisanja pojedinacnog posetioca, klikom na dugme (x), kao i izvoz svih informacija o svim posetiocima u 
+			jednoj tabeli na posebnoj stranici.
+		</li>
+		<li>
+			Zaposlenje: u ovoj sekciji administratori imaju mogucnost pregleda informacija o korisnicima koji su se prijavili za posao na stranici za oglase. Administratori imaju mogucnost
+			pregleda svih detaljnih infomacija, klikom na dugme (i) ili brisanja pojedinacnog posetioca, klikom na dugme (x), kao i sortiranje prijava po odredjenim pravilima. Izborom 
+			u prvom select box-u mogu da odaberu za koji oglas (posao) da se prikazu prijave. Izborom u drugom select box-u mogu da izaberu po kom kriterijumu ce prijave biti sortirane, ponudjene opcije su: datum prijave,
+			PTT kod, datum rodjenja, pol, titula, obrazovanje. 
+		</li>
+		<li>
+			Email kampanje: u ovoj sekciji, administratori imaju mogucnost kreiranja email kampanja. Email poruke ce se slati posetiocima sajta koji su se upisali u knjigu posetilaca i koji su potvrdili svoju prijavu na email listu.
+			Email kampanja se definise:
+			<ul>
+				<li>datumom pocetka slanja email poruka - datum moze biti i u buducnosti i tek na taj dan ce se poceti sa slanjem poruka</li>
+				<li>subject - subject polje email poruke</li>
+				<li>body - sam sadrzaj email poruke</li>
+				<li>pravila prema kojima ce se odabrati kojim posetiocima ce biti poslata poruka - poetioci mogu da budu odabrani prema: polu, godinama, obrazovanju, mesecnom prihodu, lokaciji, interesovanjima.</li>
+				<li>stranicom za brisanja - potrebno je odabrati stranicu ciji url ce biti upisan u email poruci i na koju posetioci mogu da dodju da se odjave sa liste. To je stranica koja je definisana prema obrascu EmailConfirm (prema pocetnoj strukturi to je stranica Email lista, nultog nivoa)</li>
+			</ul>
+		</li>
+	</ul>
+  </div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div>
+		<h2><a name="network">Mreža</a></h2>
+	</div>
+	<div style="text-align:left;">
+	Ovaj modul služi za administraciju podataka o predstavništvima banke i o gradovima u kojima se ona nalaze. Levi meni je podeljen na dve podsekcija. Prva sekcija predstavlja spisak prodajnih mesta a druga sekcija predstavlja spisak gradova.<br/>
+	Spisak prodajnih mesta je predstavljen u 2 nivoa, u prvom nivou se nalaze filijale a u drugom nivou ekspoziture i šalteri koji pripadaju toj filijali. Klikom na ime prodajnog mesta dobija se forma sa informacijama o prodajnom mestu.<br/> Prodajno mesto je definisano:<br/>
+	<ul>
+	<li>filijala: odabrati kojoj filijali pripada ili je samo prodajno mesto filijala</li>
+	<li>tip: odabrati tip prodajnog mesta od 4 ponuđena</li>
+	<li>naziv: upisati ime prodajnog mesta</li>
+	<li>adresa: upisati adresu prodajnog mesta</li>
+	<li>mesto: odabrati u kom mestu se nalazi</li>
+	<li>broj telefona: uneti broj telefona</li>
+	</ul>
+	Spisak mesta je predstavljen u 2 nivoa, u prvom nivou se nalaze gradovi u kojima se nalaze filijale a u drugom nivou gradovi koji pripadaju toj filijali. Klikom na ime mesta dobija se forma sa informacijama o mestu.<br/> Mesto je definisano:<br/>
+	<ul>
+	<li>filijala: odabrati kojoj filijali pripada ili je samo mesto filijala</li>
+	<li>naziv: upisati ime prodajnog mesta</li>
+	<li>poštanski kod: upisati poštanski kod mesta</li>
+	<li>koordinate: ako se u mestu koje se definise nalazi filijala, ime mesta se nalazi oznaceno na mapi tako da je potrebno uneti koordinate površine iznad koje će se aktivirati popup meni sa spiskom podmesta na mouseover korisnika. Potrebno je uneti koordinate gornje leve tačke i donje desne tačke u formatu x1,y1,x2,y2 </li>
+	</ul>
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div>
+		<h2><a name="news">Vesti</a></h2>
+	</div>
+	<div style="text-align:left;">
+Ime vesti se vidi samo na administraciji (ne i na sajtu i služi za razlikovanje vesti)
+<br/>Naslov vesti je ono što se vidi na sajtu. Treba da bude kratak i jasan.
+<br/>U sadržaj vesti upišite šta želite.
+<br/>Za datum možete stavite šta želite (današnji datum stoji kao ponuđena vrednost).
+<br/>Ako administrirate vesti na nekom od stranih jezika, tada ćete crvenim slovima imati ispisane vrednosti na srpskoj verziji vesti. 
+Vesti za koje ne postoji prevod su obeležene svetlijom bojom u levoj navigaciji. 
+Ako brišete vest dok ste na stranom jeziku, tada se briše samo ta verzija, 
+ako brišete vest dok ste na srpskoj verziji administracije tada se ta vest briše uključujući i sve prevode.
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div>
+		<h2><a name="system">Sistem</a></h2>
+	</div>
+	<div  style="text-align:left;">
+Pri unosu administratora popunite potrebna polja. Obratite pažnju da nije moguće uneti dva administratora sa istim korisničkim imenom.
+Ako za tip administratora stavite "superadmin" to znači da taj adminstrator ima prava da adminstrira SVE na sajtu.
+<br/>Ako je tip administratora editor tada je potrebno obeležiti jezik i sekcije administracije koje on može da administrira.
+<br/>Npr. ako ste za administratora stavili engleski jezik i sekciju vesti, to znači da on može da administrira samo vesti na engleskom jeziku.
+<br/>Ako ste za sekcije omogućili strukturu tada je potrebno odabrati barem jednu stranu koju će administrator moći da administrira.
+<br/>Pri radu sa lokalnim verzijama sajta (jezicima) potrebno je uneti prevedene pojmove.
+Ako ih trenutno ne znate unesite na srpskom dok prevodilac ne prevede. 
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+	<div>
+		<h2><a name="stats">Statistike</a></h2>
+	</div>
+	<div style="text-align:left;">
+Ovde možete videti statisku posećenosti sajta.
+<br/>Posetioci je statistika po broju poseta i broju pristupa na pojedine sekcije sajta. 
+Broj različitih posetilaca pokazuje broj pristupa sa različitih računara, 
+dok broj poseta prikazuje ukupan broj poseta izvan sajta (ako neko pristupi npr. vesti strane na kontakt stranu to neće biti računato kao poseta sajtu).
+<br/>Posete po sekcijam prikazuju koliko je ukupno bilo poseta na različite delove sajta, na različitim jezicima (npr. ako neko dođe na sajt i pogleda "home" stranu i dve vesti,
+to će biti računato kao jedna poseta sajtu, jedna poseta sekciji "home" i dve posete sekciji "vesti").
+<br/>Refereri je statistika po broju ulazaka na sajt sa drugih sajtova. 
+<br/>Pretraživači je statistika po broju poseta sa internet pretraživača. 
+Možete videti koje ključne reči se najčešće koriste da bi se došlo na vaš sajt.
+<br/>Reklamne kampanje je statistika po broju poseta sa sajtova na kome imate postavljene reklamne banere ili linkove.
+<br/>Kod unosa novog pretraživača potrebno je uneti ime (npt google), url (www.google.com) i upit. 
+Upit ćete otkriti tako što odete na sajt pretraživača (npr www.yahoo.com), upišete neku reč (npr. voban) i klikom na "search" (traži) otvoriće se novi prozor sa rezultatima pretrage. 
+Ako pogledate u url u internet čitaču videćete adresu pretraživača sa dodatkom (npr http://search.yahoo.com/search?<b>p=voban</b>&amp;sm=Yahoo%21+Search&amp;fr=FP-tab-web-t&amp;toggle=1).
+Upit je reč (ili samo slovo) koja ide ispred reči koju smo tražili i znaka jednakosti, znači u našem primeru to je slovo p.
+<br/>Kod unosa nove reklamne kampanje potrebno je uneti ime, url (strana na kojoj se nalazi vaš baner ili link) i tip (baner ili link).
+	</div>
+	<div>
+		<a href="#top">Top</a>
+	</div>
+</div>
+</body>
+</html>
