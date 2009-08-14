@@ -1,0 +1,52 @@
+body{
+	background-color:#222222;
+	color:#57585a;
+	padding:0px;
+	margin:0px;
+	width:100%;
+	font-family:Arial;
+	font-size:10px;
+	text-align:center;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+a:active {
+}
+
+#middWrapp{
+	padding:0px;
+	margin:0px;
+}
+#jezicakCell{
+	padding:0px;
+	margin:2px;
+}
+#menudiv{
+	width:150px;
+	/*height:440px;*/
+	padding:0px;
+	margin:5px;
+	float:left;
+	text-align:left;
+}
+#contdiv{
+	width:1000px;
+	/*height:440px;*/
+	padding:0px;
+	margin:5px;
+	background-color:#ffffff;
+	float:right;
+	border:1px solid #57585a;
+}
+#foot{
+	padding:0px;
+	margin:0px;
+	height:20px;
+	background-color:#ebebeb;
+	border-top:1px solid #57585a;
+	text-align:left;
+	clear:both;
+}
