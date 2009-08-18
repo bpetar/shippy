@@ -21,8 +21,24 @@ a:active {
 	margin:0px;
 }
 #jezicakCell{
-	padding:0px;
+	padding-right:5px;
+	padding-left:5px;
 	margin:2px;
+	background-color:#aaaaaa;
+	font-weight:bold;
+	color: #115511
+}
+#productCell{
+padding-right:5px;
+	padding-left:5px;
+	margin:2px;
+	color: #FFFFFF
+}
+#cityCell{
+	padding-right:5px;
+	padding-left:5px;
+	background-color:#000000;
+	color: #FFFF44
 }
 #menudiv{
 	width:150px;

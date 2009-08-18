@@ -4,12 +4,14 @@
 	include("classes/admin.php");
 	include("classes/city.php");
 	include("classes/store.php");
+	include("classes/ptype.php");
+	include("classes/product.php");
 
 	$act = $_GET["act"];
-	$id =  $_GET["id"];
+	$storeid =  $_GET["storeid"];
 ?>
 
-	
+
 <?
 	include("header.php");
 ?>
@@ -24,7 +26,13 @@
 		</div>
 		<div id="contdiv" style="color:#EEEEEE; background-color:#111111;">
 <?
-	include_once("content.php");
+	if(!$act) {
+		include_once("content.php");
+	} else if($act=="show_cities") {
+		include_once("content.php");
+	} else if($act=="show_store") {
+		include_once("content_store.php");
+	}
 ?>
 		</div>
 	</div>

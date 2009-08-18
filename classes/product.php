@@ -189,6 +189,26 @@ class product{
 		return $result;
 	}
 	
+	function getPricesByStoreType($storeid,$typeid) {
+		global $DB;
+		$result = Array();
+		$sql = "SELECT products.id, price, id_admin, products.name AS pname "
+				."FROM (products) "
+				."LEFT JOIN product_store ON (id_product = products.id AND id_store = ".$storeid.") "
+				."WHERE products.ptype = ".$typeid." ORDER BY pname ASC";
+		$q = new query($DB, $sql);
+		if($q->error()){
+			echo("query error: ".$q->error());
+			$q->free();
+			return -1;
+		}
+		while($row = $q->getrow()){
+			$result[] = $row;
+		}
+		$q->free();
+		return $result;	
+}
+	
 	function getPricesByProduct($id){
 		global $DB;
 		$result = Array();
