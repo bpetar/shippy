@@ -1,31 +1,42 @@
-<br>Gradovi<br><br>
-odaberi radnju u gradu u kojem zivis
-<br><br><br>
+<br>Radnja<br>
 <?
-	/*get all cities from database*/
-	$mcity = new city();
-	$mcities = $mcity->getAllCities();
-	?><table id="CityStoresTableID" border="1"><tbody><?
+	/*get store info*/
+	$mstore = new store();
+	$mstore->getById($storeid);
+	echo($mstore->name); echo(", "); echo($mstore->contact); echo(" "); echo($mstore->url); ?>
+
+	<br><br><a href="index.php?act=show_cities"> << back Home </a> <br><br>
+	<table id="CityStoresTableID" border="1"><tbody>
 	
-	for ($i = 0; $i<sizeof($mcities);$i++){
-		/*create city row*/?>
+	<?//get prices by store, divided into type sections
+	$mptype = new ptype();
+	$types = $mptype->getAllTypes();
+	for ($i = 0; $i<sizeof($types);$i++){?>
+
 		<tr> <td id="jezicakCell">
-		<?echo ($mcities[$i]["name"]);?> 
-		</td><td id="jezicakCell"></td></tr>
-		<?$mstore = new store();
-		$mstores = $mstore->getAllStoresByCity($mcities[$i]["id"]);
-		/*get all stores under city name*/
-		for ($j = 0; $j<sizeof($mstores);$j++){?>
-			<tr> <td id="cityCell"> <a href="index.php?act=show_store&storeid=<?echo ($mstores[$j]["id"]);?>">
-			<?echo ($mstores[$j]["name"]);?>
-			,&nbsp;
-			<?echo ($mstores[$j]["contact"]);?> 
-			</a></td>
-			<td id="cityCell"><input type="checkbox" id="storecheckbox"></td></tr>
+
+		<?/*create type row*/ echo ($types[$i]["name"]);?> 
+
+		</td><td id="jezicakCell"></td><td id="jezicakCell"></td></tr>
+		
+		<?/*write all products under type name*/
+		$product = new product();
+		
+		$prices = $product->getPricesByStoreType($storeid,$types[$i]["id"]);
+		for ($j = 0; $j<sizeof($prices);$j++){?>
+			<tr>
+			<td id="productCell"> 
+			<?echo ($prices[$j]["pname"]);?>
+			</td>
+			<td>
+			<?echo ($prices[$j]["price"]);?>
+			</td>
+			<td id="cityCell"><input type="checkbox" id="storecheckbox"></td>
+			</tr>
 		<?}?>
 	</font></td></tr><?
 	}
-	
+
 ?>
 </tbody></table>
 
