@@ -19,12 +19,12 @@
 	
 	<div id="middWrapp" style="border: 1px solid;">
 
-		<div id="menudiv" style="border: 1px solid red; color:#EEEEEE; background-color:#111111; width:160px; float:left;">
+		<div id="menudiv">
 <?
 	include_once("menu.php");
 ?>
 		</div>
-		<div id="contdiv" style="color:#EEEEEE; background-color:#111111;">
+		<div id="contdiv">
 <?
 	if(!$act) {
 		include_once("content.php");
