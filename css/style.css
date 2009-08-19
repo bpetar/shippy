@@ -29,7 +29,7 @@ a:active {
 	color: #115511
 }
 #productCell{
-padding-right:5px;
+	padding-right:5px;
 	padding-left:5px;
 	margin:2px;
 	color: #FFFFFF
@@ -40,22 +40,38 @@ padding-right:5px;
 	background-color:#000000;
 	color: #FFFF44
 }
+td.productNameCell{
+	padding-right:5px;
+	padding-left:5px;
+	margin:2px;
+	color: #FFFFFF
+}
+#floatingBasket{
+	position: fixed; left: 0px; bottom: 30px; width: 20%;
+	border: 1px solid red; 
+	color:#EEEEEE; 
+	background-color:#111111;
+	font-size:10px;
+}
 #menudiv{
-	width:150px;
-	/*height:440px;*/
+	width:20%;
 	padding:0px;
 	margin:5px;
 	float:left;
 	text-align:left;
+	border: 1px solid red; 
+	color:#EEEEEE; 
+	background-color:#111111;
 }
 #contdiv{
-	width:1000px;
-	/*height:440px;*/
+	width:75%;
 	padding:0px;
 	margin:5px;
 	background-color:#ffffff;
-	float:right;
+	float:left;
 	border:1px solid #57585a;
+	color:#EEEEEE; 
+	background-color:#111111;
 }
 #foot{
 	padding:0px;

@@ -6,7 +6,7 @@
 	echo($mstore->name); echo(", "); echo($mstore->contact); echo(" "); echo($mstore->url); ?>
 
 	<br><br><a href="index.php?act=show_cities"> << back Home </a> <br><br>
-	<table id="CityStoresTableID" border="1"><tbody>
+	<table id="StoreTableID" width="650px"><tbody id="StoreTableBodyID">
 	
 	<?//get prices by store, divided into type sections
 	$mptype = new ptype();
@@ -14,11 +14,11 @@
 	$rowcount = 0;
 	for ($i = 0; $i<sizeof($types);$i++){ $rowcount++;?>
 
-		<tr style="cursor:pointer" onclick="CategoryRowClick(this)" id="<?echo($rowcount);?>"> <td id="jezicakCell">
+		<tr style="cursor:pointer" onclick="CategoryRowClick(this)" id="<?echo($rowcount);?>"> <td id="jezicakCell" width="500px">
 
 		<?/*create type row*/ echo ($types[$i]["name"]);?> 
 
-		</td><td id="jezicakCell"></td><td id="jezicakCell"></td></tr>
+		</td><td id="jezicakCell"></td><td id="jezicakCell"></td><td id="jezicakCell"></td><td id="jezicakCell"></td>></tr>
 		
 		<?/*write all products under type name*/
 		$product = new product();
@@ -26,13 +26,15 @@
 		$prices = $product->getPricesByStoreType($storeid,$types[$i]["id"]);
 		for ($j = 0; $j<sizeof($prices);$j++){ $rowcount++;?>
 			<tr id="<?echo($rowcount);?>">
-			<td id="productCell"> 
+			<td class="productNameCell" id="productCell_<?echo($rowcount);?>_0"> 
 			<?echo ($prices[$j]["pname"]); ?>
 			</td>
-			<td>
+			<td id="productCell">
 			<?echo ($prices[$j]["price"]);?>
 			</td>
-			<td id="cityCell"><input type="checkbox" onclick="addToBasket(this)" id="<?echo($rowcount);?>"></td>
+			<td id="productCell"><input type="text" size="2" width="30" value="1" id="kolicina_<?echo($rowcount);?>"></td>
+			<td id="productCell"><input type="button" style="cursor:pointer" value=" + " onclick="addToBasket(this)" id="<?echo($rowcount);?>"></td>
+			<td id="productCell"><input type="text" size="2" disabled readonly value="0" id="<amount_?echo($rowcount);?>"></td>
 			</tr>
 		<?}?>
 	</font></td></tr><?
@@ -43,5 +45,11 @@
 
 
 <div id="storeTable" align=center></div>
+
+<div id="floatingBasket">
+	Sadrzaj Korpe
+	<table id="BasketTableID" width="100%"><tbody id="BasketTableBodyID">
+	</tbody></table>
+</div>
 
 <br><br><br>asd<br><br>asd<br><br>asd<br><br><br><br>asd<br><br><br>asd<br><br><br><br>
