@@ -18,7 +18,7 @@
 
 		<?/*create type row*/ echo ($types[$i]["name"]);?> 
 
-		</td><td id="jezicakCell"></td><td id="jezicakCell"></td><td id="jezicakCell"></td><td id="jezicakCell"></td>></tr>
+		</td><td id="jezicakCell"></td><td id="jezicakCell"></td><td id="jezicakCell"></td><td id="jezicakCell"></td></tr>
 		
 		<?/*write all products under type name*/
 		$product = new product();
