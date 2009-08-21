@@ -26,10 +26,10 @@
 		$prices = $product->getPricesByStoreType($storeid,$types[$i]["id"]);
 		for ($j = 0; $j<sizeof($prices);$j++){ $rowcount++;?>
 			<tr id="<?echo($rowcount);?>">
-			<td class="productNameCell" id="productCell_<?echo($rowcount);?>_0"> 
+			<td class="productNameCell" id="productCell_<?echo($rowcount);?>"> 
 			<?echo ($prices[$j]["pname"]); ?>
 			</td>
-			<td id="productCell">
+			<td id="priceCell_<?echo($rowcount);?>">
 			<?echo ($prices[$j]["price"]);?>
 			</td>
 			<td id="productCell"><input type="text" size="2" width="30" value="1" id="kolicina_<?echo($rowcount);?>"></td>
@@ -48,7 +48,17 @@
 
 <div id="floatingBasket">
 	Sadrzaj Korpe
-	<table id="BasketTableID" width="100%"><tbody id="BasketTableBodyID">
+	<table id="BasketTableID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyID">
+	<tr>
+	<td style="padding-left:3; padding-right:3;">Proizvod</td>
+	<td style="padding-left:3; padding-right:3;">Cena</td>
+	<td style="padding-left:3; padding-right:3;">Kol</td>
+	<td style="padding-left:3; padding-right:3;">-</td>
+	</tr>
+	<tr>
+	<td style="padding-left:3; padding-right:3;">TOTAL</td>
+	<td style="padding-left:3; padding-right:3; color:#99FF99" colspan="3">0.00</td>
+	</tr>
 	</tbody></table>
 </div>
 

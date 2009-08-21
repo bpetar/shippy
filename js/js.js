@@ -33,6 +33,21 @@ function removeFromBasket(pthis)
 	test1(pthis);
 }
 
+//create table cell with given text, fontsize and color
+function createBasketCell(text, fontsize, fontcolor)
+{
+	var td = document.createElement("td");
+	var cellText = document.createTextNode(text);
+	td.appendChild(cellText);
+	td.style.margin = "-1";
+	td.style.paddingLeft = 3;
+	td.style.paddingRight = 3;
+	td.border = "0";
+	td.style.color = fontcolor;
+	td.style.fontSize = fontsize;
+	return td;
+}
+
 //Adds Row to the Table of Selected Products
 function addToBasket(pthis)
 {
@@ -40,22 +55,29 @@ function addToBasket(pthis)
 	var found = false;
 	var rowID = pthis.id;
 	
-	var cellName = "productCell_" + rowID + "_";
-	var productName = clearString(document.getElementById(cellName + "0").innerHTML);
+	var productCellID = "productCell_" + rowID;
+	var priceCellID = "priceCell_" + rowID;
+	var productName = clearString(document.getElementById(productCellID).innerHTML);
+	var price = document.getElementById(priceCellID).innerHTML;
 
 	//find if added product already exists in the selectedTable
 	var productFromSelectedList;
 	var basketRows = basketTableBody.getElementsByTagName('tr');
+	
+	var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1];
+	var total = parseFloat(totalCell.innerHTML) + parseFloat(price);
+	totalCell.innerHTML = total.toFixed(2);
+
 	for(index = 0; index < basketRows.length; index++)
 	{
 		productFromSelectedList = clearString(basketRows[index].getElementsByTagName('td')[0].innerHTML);
 
 		if (productName == productFromSelectedList)
 		{
-			var amount = parseInt(basketRows[index].getElementsByTagName('td')[1].innerHTML);
+			var amount = parseInt(basketRows[index].getElementsByTagName('td')[2].innerHTML);
 			//just increase the amount
 			amount++;
-			basketRows[index].getElementsByTagName('td')[1].innerHTML = amount;
+			basketRows[index].getElementsByTagName('td')[2].innerHTML = amount;
 			found = true;
 			break;
 		}
@@ -63,23 +85,17 @@ function addToBasket(pthis)
 	
 	if(!found)
 	{
-		var row = document.createElement("tr");
+		var basketTable = document.getElementById("BasketTableID");
+		var row = basketTable.insertRow(basketTable.rows.length-1);
 		row.id = "selected_" + rowID;//it has same number as id of row from products table it will be used in remove functionality
 		var amount = 1;
 		
 		//add Product cell to the list selectedTable
-		var td = document.createElement("td");
-		var cellText = document.createTextNode(productName);
-		td.appendChild(cellText);
-		td.style.color = '#EEEEEE';
-		td.style.font.size = '6px';
-		row.appendChild(td);
-
+		row.appendChild(createBasketCell(productName, '12px', '#EEEEEE'));
+		//add Price cell to the selectedTable
+		row.appendChild(createBasketCell(price, '12px', '#EE8888'));
 		//add Amount cell to the selectedTable
-		td = document.createElement("td");
-		cellText = document.createTextNode(amount);
-		td.appendChild(cellText);
-		row.appendChild(td);
+		row.appendChild(createBasketCell(amount, '12px', '#EEEEEE'));
 		
 		//add store name with minimum price
 		//td = document.createElement("td");
@@ -87,18 +103,12 @@ function addToBasket(pthis)
 		//td.appendChild(cellText);
 		//row.appendChild(td);
 		
-		//add "remove" button
-		td = document.createElement("td");
-		var btnRemove = document.createElement("input");
-
-		btnRemove.id ="btnRemove_" + rowID;//contains id of row from products table it will be used in remove functionality
-		btnRemove.value = ' - ';
-		btnRemove.type = 'button';
-		btnRemove.onclick = function(){removeFromBasket(this)};
-		td.appendChild(btnRemove);
+		//add "remove" link
+		var td = createBasketCell(" - ", '12px', '#888888')
+		td.id = "btnRemove_" + rowID;//contains id of row from products table it will be used in remove functionality
+		td.style.cursor = 'pointer';
+		td.onclick = function(){removeFromBasket(this)};
 		row.appendChild(td);
-
-		basketTableBody.appendChild(row);
 	}
 
 }
