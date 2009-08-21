@@ -5,6 +5,12 @@ function test1(pthis)
 	alert("evo me " + pthis.id);
 }
 
+//removes html tags from string (replaces things like &amp; with just '&')
+function clearString(str)
+{
+	return str.replace(/\&amp;/g,'&');
+}
+
 //colapse and expand categories
 function CategoryRowClick(pthis)
 {
@@ -35,20 +41,21 @@ function addToBasket(pthis)
 	var rowID = pthis.id;
 	
 	var cellName = "productCell_" + rowID + "_";
-	var productName = document.getElementById(cellName + "0").innerHTML;
-	
+	var productName = clearString(document.getElementById(cellName + "0").innerHTML);
+
 	//find if added product already exists in the selectedTable
 	var productFromSelectedList;
 	var basketRows = basketTableBody.getElementsByTagName('tr');
 	for(index = 0; index < basketRows.length; index++)
 	{
-		productFromSelectedList = basketRows[index].getElementsByTagName('td')[0].innerHTML;
+		productFromSelectedList = clearString(basketRows[index].getElementsByTagName('td')[0].innerHTML);
+
 		if (productName == productFromSelectedList)
 		{
-			var amount = parseInt(basketRows[index].getElementsByTagName('td')[2].innerHTML);
+			var amount = parseInt(basketRows[index].getElementsByTagName('td')[1].innerHTML);
 			//just increase the amount
 			amount++;
-			selectedItemsRows[index].getElementsByTagName('td')[1].innerHTML = amount;
+			basketRows[index].getElementsByTagName('td')[1].innerHTML = amount;
 			found = true;
 			break;
 		}

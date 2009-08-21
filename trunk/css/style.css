@@ -47,7 +47,9 @@ td.productNameCell{
 	color: #FFFFFF
 }
 #floatingBasket{
-	position: fixed; left: 0px; bottom: 30px; width: 20%;
+	position: fixed; 
+	left: 0px; 
+	bottom: 30px;
 	border: 1px solid red; 
 	color:#EEEEEE; 
 	background-color:#111111;
