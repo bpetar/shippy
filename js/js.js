@@ -27,12 +27,6 @@ function CategoryRowClick(pthis)
 	}
 }
 
-//Remove from basket
-function removeFromBasket(pthis)
-{
-	test1(pthis);
-}
-
 //create table cell with given text, fontsize and color
 function createBasketCell(text, fontsize, fontcolor)
 {
@@ -48,26 +42,54 @@ function createBasketCell(text, fontsize, fontcolor)
 	return td;
 }
 
-//Adds Row to the Table of Selected Products
+//Remove 1 product from basket
+function removeFromBasket(rowIndex)
+{
+	//get price from given row
+	var basketRow = document.getElementById("basketRow_"+rowIndex);
+	var price = parseFloat(basketRow.getElementsByTagName('td')[1].innerHTML);
+	var amountCell = basketRow.getElementsByTagName('td')[2];
+	var amount = parseInt(amountCell.innerHTML);
+	
+	//get total cell
+	var basketTableBody = document.getElementById("BasketTableBodyID");
+	var basketRows = basketTableBody.getElementsByTagName('tr');
+	var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1];
+	
+	//subtract price from total amout
+	var total = parseFloat(totalCell.innerHTML) - parseFloat(price);
+	totalCell.innerHTML = total.toFixed(2);
+		
+	if(amount>1) {
+		//just reduce the amount by 1
+		amountCell.innerHTML = amount-1;
+	} else {
+		//remove given row
+		basketTableBody.removeChild(basketRow);
+	}
+}
+
+//Adds product to the basket table
 function addToBasket(pthis)
 {
 	var basketTableBody = document.getElementById("BasketTableBodyID");
+	var basketRows = basketTableBody.getElementsByTagName('tr');
 	var found = false;
 	var rowID = pthis.id;
 	
+	//get product price and name
 	var productCellID = "productCell_" + rowID;
 	var priceCellID = "priceCell_" + rowID;
 	var productName = clearString(document.getElementById(productCellID).innerHTML);
 	var price = document.getElementById(priceCellID).innerHTML;
 
-	//find if added product already exists in the selectedTable
-	var productFromSelectedList;
-	var basketRows = basketTableBody.getElementsByTagName('tr');
-	
+	//add price to total amout
 	var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1];
 	var total = parseFloat(totalCell.innerHTML) + parseFloat(price);
 	totalCell.innerHTML = total.toFixed(2);
 
+	//find if added product already exists in the selectedTable
+	var productFromSelectedList;
 	for(index = 0; index < basketRows.length; index++)
 	{
 		productFromSelectedList = clearString(basketRows[index].getElementsByTagName('td')[0].innerHTML);
@@ -75,7 +97,7 @@ function addToBasket(pthis)
 		if (productName == productFromSelectedList)
 		{
 			var amount = parseInt(basketRows[index].getElementsByTagName('td')[2].innerHTML);
-			//just increase the amount
+			//product already exists in the basket, just increase the amount
 			amount++;
 			basketRows[index].getElementsByTagName('td')[2].innerHTML = amount;
 			found = true;
@@ -85,9 +107,10 @@ function addToBasket(pthis)
 	
 	if(!found)
 	{
+		//create new product row, insert it at the bottom of table (but above last table line with TOTAL amount)
 		var basketTable = document.getElementById("BasketTableID");
 		var row = basketTable.insertRow(basketTable.rows.length-1);
-		row.id = "selected_" + rowID;//it has same number as id of row from products table it will be used in remove functionality
+		row.id = 'basketRow_'+rowID;
 		var amount = 1;
 		
 		//add Product cell to the list selectedTable
@@ -96,18 +119,11 @@ function addToBasket(pthis)
 		row.appendChild(createBasketCell(price, '12px', '#EE8888'));
 		//add Amount cell to the selectedTable
 		row.appendChild(createBasketCell(amount, '12px', '#EEEEEE'));
-		
-		//add store name with minimum price
-		//td = document.createElement("td");
-		//cellText = document.createTextNode(minimumPriceStoreName);
-		//td.appendChild(cellText);
-		//row.appendChild(td);
-		
+				
 		//add "remove" link
 		var td = createBasketCell(" - ", '12px', '#888888')
-		td.id = "btnRemove_" + rowID;//contains id of row from products table it will be used in remove functionality
 		td.style.cursor = 'pointer';
-		td.onclick = function(){removeFromBasket(this)};
+		td.onclick = function(){removeFromBasket(rowID)};
 		row.appendChild(td);
 	}
 
