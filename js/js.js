@@ -76,6 +76,7 @@ function addToBasket(pthis)
 	var basketRows = basketTableBody.getElementsByTagName('tr');
 	var found = false;
 	var rowID = pthis.id;
+	var amount = parseInt(document.getElementById("kolicina_"+rowID).value);
 	
 	//get product price and name
 	var productCellID = "productCell_" + rowID;
@@ -96,10 +97,11 @@ function addToBasket(pthis)
 
 		if (productName == productFromSelectedList)
 		{
-			var amount = parseInt(basketRows[index].getElementsByTagName('td')[2].innerHTML);
+			var totalAmount = parseInt(basketRows[index].getElementsByTagName('td')[2].innerHTML);
 			//product already exists in the basket, just increase the amount
-			amount++;
-			basketRows[index].getElementsByTagName('td')[2].innerHTML = amount;
+			totalAmount += amount;
+			basketRows[index].getElementsByTagName('td')[2].innerHTML = totalAmount;
+			document.getElementById("amount_"+rowID).value = totalAmount;
 			found = true;
 			break;
 		}
@@ -111,7 +113,6 @@ function addToBasket(pthis)
 		var basketTable = document.getElementById("BasketTableID");
 		var row = basketTable.insertRow(basketTable.rows.length-1);
 		row.id = 'basketRow_'+rowID;
-		var amount = 1;
 		
 		//add Product cell to the list selectedTable
 		row.appendChild(createBasketCell(productName, '12px', '#EEEEEE'));
@@ -125,6 +126,10 @@ function addToBasket(pthis)
 		td.style.cursor = 'pointer';
 		td.onclick = function(){removeFromBasket(rowID)};
 		row.appendChild(td);
+		
+		//update amount in table line
+		document.getElementById("amount_"+rowID).value = amount;
+		document.getElementById("amount_"+rowID).style.backgroundColor="#FFFF44";
 	}
 
 }

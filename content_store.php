@@ -29,12 +29,12 @@
 			<td class="productNameCell" id="productCell_<?echo($rowcount);?>"> 
 			<?echo ($prices[$j]["pname"]); ?>
 			</td>
-			<td id="priceCell_<?echo($rowcount);?>">
-			<?echo ($prices[$j]["price"]);?>
+			<td class="productNameCell" id="priceCell_<?echo($rowcount);?>">
+			<?if(!$prices[$j]["price"]) {echo("nema");}else{echo($prices[$j]["price"]);}?>
 			</td>
 			<td id="productCell"><input type="text" size="2" width="30" value="1" id="kolicina_<?echo($rowcount);?>"></td>
 			<td id="productCell"><input type="button" style="cursor:pointer" value=" + " onclick="addToBasket(this)" id="<?echo($rowcount);?>"></td>
-			<td id="productCell"><input type="text" size="2" disabled readonly value="0" id="<amount_?echo($rowcount);?>"></td>
+			<td id="productCell"><input type="text" size="2" value="0" id="amount_<?echo($rowcount);?>"></td>
 			</tr>
 		<?}?>
 	</font></td></tr><?
