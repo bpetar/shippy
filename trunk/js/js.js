@@ -15,7 +15,10 @@ function clearString(str)
 function CategoryRowClick(pthis)
 {
 	var rowid = parseInt(pthis.id) + 1;
-	var row = document.getElementById(rowid);
+	//var row = document.getElementById(rowid);
+	var rows = document.getElementById("StoreTableBodyID").getElementsByTagName('tr');
+	var row = rows[rowid];
+	
 	while (row.style.cursor != 'pointer')
 	{
 		if(row.style.display == 'none')	{
@@ -23,7 +26,9 @@ function CategoryRowClick(pthis)
 		} else {
 			row.style.display = 'none';
 		}
-		row = document.getElementById(++rowid);
+		
+		rowid++;
+		row = rows[rowid];
 	}
 }
 

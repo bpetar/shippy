@@ -12,7 +12,7 @@
 	$mptype = new ptype();
 	$types = $mptype->getAllTypes();
 	$rowcount = 0;
-	for ($i = 0; $i<sizeof($types);$i++){ $rowcount++;?>
+	for ($i = 0; $i<sizeof($types);$i++){?>
 
 		<tr style="cursor:pointer" onclick="CategoryRowClick(this)" id="<?echo($rowcount);?>"> <td id="jezicakCell" width="500px">
 
@@ -37,10 +37,8 @@
 			<td id="productCell"><input type="text" size="2" value="0" id="amount_<?echo($rowcount);?>"></td>
 			</tr>
 		<?}?>
-	</font></td></tr><?
-	}
-
-?>
+	</font></td></tr><? $rowcount++;
+	}?>
 </tbody></table>
 
 
