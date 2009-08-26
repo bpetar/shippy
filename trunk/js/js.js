@@ -11,11 +11,185 @@ function clearString(str)
 	return str.replace(/\&amp;/g,'&');
 }
 
-//colapse and expand categories
+function waitCursor(pthis)
+{
+	pthis.style.cursor = 'wait';
+}
+
+
+
+
+function addSearchRow( row , productID, name, categoryName)
+{
+	if(productID == -1)
+	{
+		var td = document.createElement("TD");
+		td.appendChild(document.createTextNode("Ime Proizvoda"));
+		td.width = 260;
+		row.appendChild(td);
+		
+		td = document.createElement("TD");
+		td.appendChild(document.createTextNode("Kategorija"));
+		td.width = 100;
+		row.appendChild(td);
+		
+		for (var storeIndex = 0; storeIndex < numStores; storeIndex++)
+		{
+			td = document.createElement("TD");
+			td.appendChild(document.createTextNode(storeNames[storeIndex]));
+			td.width = 80;
+			row.appendChild(td);
+		}
+
+		td = document.createElement("TD");
+		td.appendChild(document.createTextNode("Dodaj"));
+		td.width = 120;
+		row.appendChild(td);
+		
+		return;
+
+	}
+	
+	var arrayID = productID.split("_"); //why split("_")? because ID is in the form: cell_1_42, cell_2_435, etc. so split will make two strings: "cell" and remaining numbers
+	var prodID = arrayID[1]; //we take the number from id
+
+	//get product name input and add this cell
+	var td = document.createElement("TD");
+ 	td.id = productID;
+ 	td.appendChild(document.createTextNode(name));
+	row.appendChild(td);
+	
+	var td = document.createElement("TD");
+ 	td.appendChild(document.createTextNode(categoryName));
+//	td.style.textIndent = "20px";
+	row.appendChild(td);
+	
+	for (var storeIndex = 0; storeIndex < numStores; storeIndex++)
+	{
+		var cellId = "cell_" + prodID + "_" + storeIDs[storeIndex];//this id will be used when removing is made
+		var value = document.getElementById(cellId).firstChild.data;
+		td = document.createElement("TD");
+		td.appendChild(document.createTextNode(value));
+		actionImg = document.getElementById(cellId).childNodes[1];
+		if(actionImg)
+		{
+			var oImg=document.createElement("img");
+			oImg.id = actionImg.id + "_";
+			oImg.setAttribute('src', 'action.gif');
+			oImg.onmouseover = function() {priceOnActionHover(this)};
+			oImg.onmouseout = function() {priceOnActionHoverOut(this)};
+			td.appendChild(oImg);
+		}
+		row.appendChild(td);
+	}
+
+	//create add buttons
+	td = document.createElement("td");
+	td.align = "right";
+	var inp_add = document.createElement("input");
+	inp_add.style.width = 47;
+	inp_add.value = 1;
+	inp_add.id = "searchAddToBasketInput_" + prodID;
+	td.appendChild(inp_add);
+	var btnAdd = document.createElement("input");
+	btnAdd.id = "searchAddToBasketButton_" + prodID;
+	btnAdd.value = 'Dodaj';
+	btnAdd.type = 'button';
+	btnAdd.onclick = function(){addToBasket(this)};
+	td.appendChild(btnAdd);
+	td.width = 108;
+	row.appendChild(td);
+}
+
+function searchOnClick(pthis)
+{
+
+	var searchTableDiv = document.getElementById("searchTable");
+	//remove previous search table
+	while(searchTableDiv.lastChild)
+	{
+		searchTableDiv.removeChild(searchTableDiv.lastChild);
+	}
+	
+	var searchTable = document.createElement("table");
+	var searchTableBody = document.createElement("tbody");
+	var found = false;
+	
+	//create header row: -1 is crucial parameter here
+	var row = document.createElement("tr");
+	addSearchRow(row, -1, "", "");
+	row.style.background = "rgb(105,205,210)";
+	searchTableBody.appendChild(row);
+	searchTable.width = 360 + 120 + numStores*80;
+	
+	var productsRows = tblBody.getElementsByTagName('tr');	//add Product cell to the list table
+	var category = 0;
+	var categoryName = productsRows[0].getElementsByTagName('td')[0].innerHTML;
+	for(var i = 1; i < productsRows.length -1; i++)
+	{
+		if(categoryRowsID[category+1] == i)
+		{
+			categoryName = productsRows[i].getElementsByTagName('td')[0].innerHTML;
+			category++;
+			continue;
+		}
+		if(i == categoryRowsID[category] + 1)
+		{
+			continue;
+		}
+		if(i == categoryRowsID[category+1] - 1)
+		{
+			continue;
+		}
+
+		var cells = productsRows[i].getElementsByTagName('td');
+		var str = cells[0].innerHTML;
+		lowerStr = str.toLowerCase();
+		var phrase = document.getElementById("searchBox").value;
+		if(lowerStr.match(phrase.toLowerCase()))
+		{
+			found = true;
+			var row = document.createElement("tr");
+			addSearchRow(row, cells[0].id, str, categoryName);
+			searchTableBody.appendChild(row);
+		}
+	}
+
+	// put the <tbody> in the <table>
+	searchTable.appendChild(searchTableBody);
+	// sets the border attribute of tbl to1;
+	searchTable.setAttribute("border", "1");
+
+	if(found)
+	{
+		cellText = document.createTextNode("Pronadjeni proizvodi:");
+		searchTableDiv.appendChild(cellText);
+		searchTableDiv.appendChild(document.createElement("br"));
+		searchTableDiv.appendChild(document.createElement("br"));
+		searchTableDiv.appendChild(searchTable);
+	}
+	else
+	{
+		cellText = document.createTextNode("Nije pronadjen ni jedan proizvod.");
+		searchTableDiv.appendChild(cellText);
+		searchTableDiv.appendChild(document.createElement("br"));
+	}
+	
+	searchTableDiv.appendChild(document.createElement("br"));
+	
+	pthis.style.cursor = 'pointer';
+}
+
+
+function selectText(pthis)
+{
+	pthis.select();
+}
+
+//user clicked the category - expand/colapse it
 function CategoryRowClick(pthis)
 {
 	var rowid = parseInt(pthis.id) + 1;
-	//var row = document.getElementById(rowid);
 	var rows = document.getElementById("StoreTableBodyID").getElementsByTagName('tr');
 	var row = rows[rowid];
 	
@@ -30,6 +204,8 @@ function CategoryRowClick(pthis)
 		rowid++;
 		row = rows[rowid];
 	}
+	
+	rows[pthis.id].style.cursor = 'pointer';
 }
 
 //create table cell with given text, fontsize and color
