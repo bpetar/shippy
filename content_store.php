@@ -6,6 +6,13 @@
 	echo($mstore->name); echo(", "); echo($mstore->contact); echo(" "); echo($mstore->url); ?>
 
 	<br><br><a href="index.php?act=show_cities"> << back Home </a> <br><br>
+	<input type="text" id="searchBox" onclick="selectText(this)" value="Unesi rec za pretragu"> 
+	<input type="button" style="cursor:pointer" value="Trazi" onMouseDown="waitCursor(this)" onMouseUp="searchOnClick(this)">
+	<br><br>
+
+	<div id="searchTable">
+	</div><br><br>
+
 	<table id="StoreTableID" width="650px"><tbody id="StoreTableBodyID">
 	
 	<?//get prices by store, divided into type sections
@@ -14,7 +21,7 @@
 	$rowcount = 0;
 	for ($i = 0; $i<sizeof($types);$i++){?>
 
-		<tr style="cursor:pointer" onclick="CategoryRowClick(this)" id="<?echo($rowcount);?>"> <td id="jezicakCell" width="500px">
+		<tr style="cursor:pointer" onMouseDown="waitCursor(this)" onMouseUp="CategoryRowClick(this)" id="<?echo($rowcount);?>"> <td id="jezicakCell" width="500px">
 
 		<?/*create type row*/ echo ($types[$i]["name"]);?> 
 
