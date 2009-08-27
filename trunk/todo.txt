@@ -1,0 +1,12 @@
+cenjovnik todo
+
+- collapse basket
++ search
++ nema fix total of NAN
+- add store to compare
+- load users
+- login
+- save spisak
+- category of favorite products
++ row highlight on mouse over
+

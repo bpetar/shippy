@@ -10,7 +10,7 @@
 	<input type="button" style="cursor:pointer" value="Trazi" onMouseDown="waitCursor(this)" onMouseUp="searchOnClick(this)">
 	<br><br>
 
-	<div id="searchTable">
+	<div id="searchTableDiv">
 	</div><br><br>
 
 	<table id="StoreTableID" width="650px"><tbody id="StoreTableBodyID">
@@ -51,7 +51,7 @@
 
 <div id="storeTable" align=center></div>
 
-<div id="floatingBasket">
+<div class="transparent" id="floatingBasket">
 	Sadrzaj Korpe
 	<table id="BasketTableID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyID">
 	<tr>
@@ -65,6 +65,10 @@
 	<td style="padding-left:3; padding-right:3; color:#99FF99" colspan="3">0.00</td>
 	</tr>
 	</tbody></table>
+	<a style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
+	<a style="cursor:pointer" onClick="emptyBasket()"> sprazni </a>
+	<a style="cursor:pointer" onClick="printBasket()"> stampaj </a>
+	<a id="sazminjkoID" style="cursor:pointer" onClick="collapseBasket()"> sazmi </a>
 </div>
 
 <br><br><br>asd<br><br>asd<br><br>asd<br><br><br><br>asd<br><br><br>asd<br><br><br><br>

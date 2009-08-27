@@ -6,7 +6,6 @@ body{
 	width:100%;
 	font-family:Arial;
 	font-size:10px;
-	text-align:center;
 }
 
 a:hover {
@@ -40,6 +39,14 @@ a:active {
 	background-color:#000000;
 	color: #FFFF44
 }
+
+.transparent
+{
+   filter:alpha(opacity=90); 
+   -moz-opacity: 0.8; 
+   opacity: 0.9; 
+}
+
 td.productNameCell{
 	padding-right:5px;
 	padding-left:5px;
