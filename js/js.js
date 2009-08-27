@@ -1,5 +1,5 @@
 
-//test
+//alert test
 function test1(pthis)
 {
 	alert("evo me " + pthis.id);
@@ -14,98 +14,120 @@ function clearString(str)
 function waitCursor(pthis)
 {
 	pthis.style.cursor = 'wait';
+	mousepresed = true;
 }
 
 var HIGHLIGHT_ROW_COLOR = '#CCCCCC';
 var ROW_COLOR = '#AAAAAA';
 
-
-function addSearchRow( row , productID, name, categoryName)
+function selectText(pthis)
 {
-	if(productID == -1)
+	pthis.select();
+}
+
+function expandBasket()
+{
+	var divBasket = document.getElementById("floatingBasket");
+	divBasket.style.overflow = 'visible';
+	divBasket.style.minHeight = 100;
+	var sazmi = document.getElementById("sazminjkoID");
+	sazmi.innerHTML = "sazmi";
+	sazmi.onclick = function(){collapseBasket()};
+}
+
+function collapseBasket()
+{
+	var divBasket = document.getElementById("floatingBasket");
+	divBasket.style.height = 100;
+	divBasket.style.overflow = 'auto';
+	
+	var sazmi = document.getElementById("sazminjkoID");
+	sazmi.innerHTML = "rasiri";
+	sazmi.onclick = function(){expandBasket()};
+}
+
+function emptyBasket()
+{
+}
+
+function saveBasket()
+{
+	alert("Spisak za prodavnicu je sacuvan!");
+}
+
+function printBasket()
+{
+	alert("Spisak za prodavnicu ce da bude otstampan ovde!");
+}
+
+//create table cell with given text, fontsize and color
+function createSearchCell(text, fontsize, background)
+{
+	var td = document.createElement("td");
+	var cellText = document.createTextNode(text);
+	td.appendChild(cellText);
+	td.style.margin = "-1";
+	td.style.paddingLeft = 3;
+	td.style.paddingRight = 3;
+	td.border = "0";
+	td.style.color = '#DDDDDD';
+	td.style.backgroundColor=background;
+	td.style.fontSize = fontsize;
+	return td;
+}
+
+function createSearchRow( productID, name, categoryName, price)
+{
+	var row = document.createElement("tr");
+	row.appendChild(createSearchCell(name, 16, '#222222'));
+	row.appendChild(createSearchCell(categoryName, 16, '#222222'));
+	row.appendChild(createSearchCell(price, 16, '#222222'));
+	return row;
+}
+
+function createSearchHeaderRow()
+{
+	var row = document.createElement("tr");
+	row.appendChild(createSearchCell("Ime Proizvoda", 16, '#666666'));
+	row.appendChild(createSearchCell("Kategorija", 16, '#666666'));
+	row.appendChild(createSearchCell("Cena", 16, '#666666'));
+	return row;
+}
+
+function fillSearchTable(searchTableBody)
+{
+	searchTableBody.appendChild(createSearchHeaderRow());
+	var found = false;
+	var productsRows = document.getElementById("StoreTableBodyID").getElementsByTagName('tr');
+	var categoryName = clearString(productsRows[0].getElementsByTagName('td')[0].innerHTML);
+	var productName = "";
+	var productPrice = 0;
+	var searchTerm = document.getElementById("searchBox").value.toLowerCase();
+	
+	for(var i = 1; i < productsRows.length -1; i++)
 	{
-		var td = document.createElement("TD");
-		td.appendChild(document.createTextNode("Ime Proizvoda"));
-		td.width = 260;
-		row.appendChild(td);
-		
-		td = document.createElement("TD");
-		td.appendChild(document.createTextNode("Kategorija"));
-		td.width = 100;
-		row.appendChild(td);
-		
-		for (var storeIndex = 0; storeIndex < numStores; storeIndex++)
+		if(productsRows[i].style.cursor == 'pointer') 
 		{
-			td = document.createElement("TD");
-			td.appendChild(document.createTextNode(storeNames[storeIndex]));
-			td.width = 80;
-			row.appendChild(td);
+			categoryName = productsRows[i].getElementsByTagName('td')[0].innerHTML;
+			continue;
 		}
-
-		td = document.createElement("TD");
-		td.appendChild(document.createTextNode("Dodaj"));
-		td.width = 120;
-		row.appendChild(td);
 		
-		return;
-
-	}
-	
-	var arrayID = productID.split("_"); //why split("_")? because ID is in the form: cell_1_42, cell_2_435, etc. so split will make two strings: "cell" and remaining numbers
-	var prodID = arrayID[1]; //we take the number from id
-
-	//get product name input and add this cell
-	var td = document.createElement("TD");
- 	td.id = productID;
- 	td.appendChild(document.createTextNode(name));
-	row.appendChild(td);
-	
-	var td = document.createElement("TD");
- 	td.appendChild(document.createTextNode(categoryName));
-//	td.style.textIndent = "20px";
-	row.appendChild(td);
-	
-	for (var storeIndex = 0; storeIndex < numStores; storeIndex++)
-	{
-		var cellId = "cell_" + prodID + "_" + storeIDs[storeIndex];//this id will be used when removing is made
-		var value = document.getElementById(cellId).firstChild.data;
-		td = document.createElement("TD");
-		td.appendChild(document.createTextNode(value));
-		actionImg = document.getElementById(cellId).childNodes[1];
-		if(actionImg)
+		productName = clearString(productsRows[i].getElementsByTagName('td')[0].innerHTML);
+		
+		if(productName.toLowerCase().match(searchTerm)) 
 		{
-			var oImg=document.createElement("img");
-			oImg.id = actionImg.id + "_";
-			oImg.setAttribute('src', 'action.gif');
-			oImg.onmouseover = function() {priceOnActionHover(this)};
-			oImg.onmouseout = function() {priceOnActionHoverOut(this)};
-			td.appendChild(oImg);
+			productPrice = productsRows[i].getElementsByTagName('td')[1].innerHTML;
+			searchTableBody.appendChild(createSearchRow(i,productName,categoryName,productPrice));
+			found = true;
 		}
-		row.appendChild(td);
 	}
-
-	//create add buttons
-	td = document.createElement("td");
-	td.align = "right";
-	var inp_add = document.createElement("input");
-	inp_add.style.width = 47;
-	inp_add.value = 1;
-	inp_add.id = "searchAddToBasketInput_" + prodID;
-	td.appendChild(inp_add);
-	var btnAdd = document.createElement("input");
-	btnAdd.id = "searchAddToBasketButton_" + prodID;
-	btnAdd.value = 'Dodaj';
-	btnAdd.type = 'button';
-	btnAdd.onclick = function(){addToBasket(this)};
-	td.appendChild(btnAdd);
-	td.width = 108;
-	row.appendChild(td);
+	return found;
 }
 
 function searchOnClick(pthis)
 {
-
-	var searchTableDiv = document.getElementById("searchTable");
+	var searchTableDiv = document.getElementById("searchTableDiv");
+	
 	//remove previous search table
 	while(searchTableDiv.lastChild)
 	{
@@ -116,55 +138,13 @@ function searchOnClick(pthis)
 	var searchTableBody = document.createElement("tbody");
 	var found = false;
 	
-	//create header row: -1 is crucial parameter here
-	var row = document.createElement("tr");
-	addSearchRow(row, -1, "", "");
-	row.style.background = "rgb(105,205,210)";
-	searchTableBody.appendChild(row);
-	searchTable.width = 360 + 120 + numStores*80;
+	found = fillSearchTable(searchTableBody);
 	
-	var productsRows = tblBody.getElementsByTagName('tr');	//add Product cell to the list table
-	var category = 0;
-	var categoryName = productsRows[0].getElementsByTagName('td')[0].innerHTML;
-	for(var i = 1; i < productsRows.length -1; i++)
-	{
-		if(categoryRowsID[category+1] == i)
-		{
-			categoryName = productsRows[i].getElementsByTagName('td')[0].innerHTML;
-			category++;
-			continue;
-		}
-		if(i == categoryRowsID[category] + 1)
-		{
-			continue;
-		}
-		if(i == categoryRowsID[category+1] - 1)
-		{
-			continue;
-		}
-
-		var cells = productsRows[i].getElementsByTagName('td');
-		var str = cells[0].innerHTML;
-		lowerStr = str.toLowerCase();
-		var phrase = document.getElementById("searchBox").value;
-		if(lowerStr.match(phrase.toLowerCase()))
-		{
-			found = true;
-			var row = document.createElement("tr");
-			addSearchRow(row, cells[0].id, str, categoryName);
-			searchTableBody.appendChild(row);
-		}
-	}
-
-	// put the <tbody> in the <table>
 	searchTable.appendChild(searchTableBody);
-	// sets the border attribute of tbl to1;
-	searchTable.setAttribute("border", "1");
-
+	
 	if(found)
 	{
-		cellText = document.createTextNode("Pronadjeni proizvodi:");
-		searchTableDiv.appendChild(cellText);
+		searchTableDiv.appendChild(document.createTextNode("Pronadjeni proizvodi:"));
 		searchTableDiv.appendChild(document.createElement("br"));
 		searchTableDiv.appendChild(document.createElement("br"));
 		searchTableDiv.appendChild(searchTable);
@@ -177,14 +157,7 @@ function searchOnClick(pthis)
 	}
 	
 	searchTableDiv.appendChild(document.createElement("br"));
-	
 	pthis.style.cursor = 'pointer';
-}
-
-
-function selectText(pthis)
-{
-	pthis.select();
 }
 
 function highlightCategoryRow(pthis)
@@ -203,6 +176,9 @@ function highlightCategoryRowOut(pthis)
 	{
 		children[i].style.backgroundColor = ROW_COLOR;
 	}
+	
+	//fix one bug here, if mouse is pressed over the row, and moved away, then mouse up event will not be handled by the row, so pointer will remain 'wait'
+	pthis.style.cursor = 'pointer';
 }
 
 //user clicked the category - expand/colapse it
@@ -311,6 +287,13 @@ function addToBasket(pthis)
 			found = true;
 			break;
 		}
+	}
+	
+	if(basketRows.length>30)
+	{
+		var divBasket = document.getElementById("floatingBasket");
+		divBasket.style.height = 530;
+		divBasket.style.overflow = 'auto';
 	}
 	
 	if(!found)
