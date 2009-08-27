@@ -16,7 +16,8 @@ function waitCursor(pthis)
 	pthis.style.cursor = 'wait';
 }
 
-
+var HIGHLIGHT_ROW_COLOR = '#CCCCCC';
+var ROW_COLOR = '#AAAAAA';
 
 
 function addSearchRow( row , productID, name, categoryName)
@@ -186,6 +187,24 @@ function selectText(pthis)
 	pthis.select();
 }
 
+function highlightCategoryRow(pthis)
+{
+	var children = pthis.getElementsByTagName('td');
+	for(var i = 0; i < children.length; i++)
+	{
+		children[i].style.backgroundColor = HIGHLIGHT_ROW_COLOR;
+	}
+}
+
+function highlightCategoryRowOut(pthis)
+{
+	var children = pthis.getElementsByTagName('td');
+	for(var i = 0; i < children.length; i++)
+	{
+		children[i].style.backgroundColor = ROW_COLOR;
+	}
+}
+
 //user clicked the category - expand/colapse it
 function CategoryRowClick(pthis)
 {
@@ -238,8 +257,11 @@ function removeFromBasket(rowIndex)
 	var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1];
 	
 	//subtract price from total amout
-	var total = parseFloat(totalCell.innerHTML) - parseFloat(price);
-	totalCell.innerHTML = total.toFixed(2);
+	if(price)
+	{
+		var total = parseFloat(totalCell.innerHTML) - price;
+		totalCell.innerHTML = total.toFixed(2);
+	}
 		
 	if(amount>1) {
 		//just reduce the amount by 1
@@ -266,9 +288,12 @@ function addToBasket(pthis)
 	var price = document.getElementById(priceCellID).innerHTML;
 
 	//add price to total amout
-	var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1];
-	var total = parseFloat(totalCell.innerHTML) + parseFloat(price);
-	totalCell.innerHTML = total.toFixed(2);
+	if(!price.match("nema"))
+	{
+		var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1];
+		var total = parseFloat(totalCell.innerHTML) + amount*parseFloat(price);
+		totalCell.innerHTML = total.toFixed(2);
+	}
 
 	//find if added product already exists in the selectedTable
 	var productFromSelectedList;
