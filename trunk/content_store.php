@@ -21,7 +21,7 @@
 	$rowcount = 0;
 	for ($i = 0; $i<sizeof($types);$i++){?>
 
-		<tr style="cursor:pointer" onMouseDown="waitCursor(this)" onMouseUp="CategoryRowClick(this)" id="<?echo($rowcount);?>"> <td id="jezicakCell" width="500px">
+		<tr style="cursor:pointer" onMouseOut="highlightCategoryRowOut(this)" onMouseOver="highlightCategoryRow(this)" onMouseDown="waitCursor(this)" onMouseUp="CategoryRowClick(this)" id="<?echo($rowcount);?>"> <td id="jezicakCell" width="500px">
 
 		<?/*create type row*/ echo ($types[$i]["name"]);?> 
 
@@ -41,7 +41,7 @@
 			</td>
 			<td id="productCell"><input type="text" size="2" width="30" value="1" id="kolicina_<?echo($rowcount);?>"></td>
 			<td id="productCell"><input type="button" style="cursor:pointer" value=" + " onclick="addToBasket(this)" id="<?echo($rowcount);?>"></td>
-			<td id="productCell"><input type="text" size="2" value="0" id="amount_<?echo($rowcount);?>"></td>
+			<td id="productCell"><input type="text" size="2" value="0" disabled="disabled" id="amount_<?echo($rowcount);?>"></td>
 			</tr>
 		<?}?>
 	</font></td></tr><? $rowcount++;
@@ -55,7 +55,7 @@
 	Sadrzaj Korpe
 	<table id="BasketTableID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyID">
 	<tr>
-	<td style="padding-left:3; padding-right:3;">Proizvod</td>
+	<td style="padding-left:3; padding-right:3; min-width:200;" nowrap>Proizvod</td>
 	<td style="padding-left:3; padding-right:3;">Cena</td>
 	<td style="padding-left:3; padding-right:3;">Kol</td>
 	<td style="padding-left:3; padding-right:3;">-</td>
