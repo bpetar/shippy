@@ -8,6 +8,8 @@
 	<br><br><a href="index.php?act=show_cities"> << back Home </a> <br><br>
 	<input type="text" id="searchBox" onclick="selectText(this)" value="Unesi rec za pretragu"> 
 	<input type="button" style="cursor:pointer" value="Trazi" onMouseDown="waitCursor(this)" onMouseUp="searchOnClick(this)">
+	<input type="button" style="cursor:pointer" value="Ponisti" onClick="removeSearchTable()">
+
 	<br><br>
 
 	<div id="searchTableDiv">
@@ -51,7 +53,7 @@
 
 <div id="storeTable" align=center></div>
 
-<div class="transparent" id="floatingBasket">
+<div class="transparent09" id="floatingBasket">
 	Sadrzaj Korpe
 	<table id="BasketTableID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyID">
 	<tr>
@@ -66,9 +68,26 @@
 	</tr>
 	</tbody></table>
 	<a style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
-	<a style="cursor:pointer" onClick="emptyBasket()"> sprazni </a>
+	<a style="cursor:pointer" onClick="emptyBasket()"> izprazni </a>
 	<a style="cursor:pointer" onClick="printBasket()"> stampaj </a>
 	<a id="sazminjkoID" style="cursor:pointer" onClick="collapseBasket()"> sazmi </a>
+</div>
+
+<div class="transparent09" id="floatingBasketMinimized">
+	
+	<table id="BasketTableMinimizedID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyMinimizedID">
+	<tr>
+	<td colspan="2" style="padding-left:3; padding-right:3; min-width:200;" nowrap>U korpi nema proizvoda</td>
+	</tr>
+	<tr>
+	<td style="padding-left:3; padding-right:3;">TOTAL</td>
+	<td style="padding-left:3; padding-right:3; color:#99FF99">0.00</td>
+	</tr>
+	</tbody></table>
+	<a style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
+	<a style="cursor:pointer" onClick="emptyBasket()"> izprazni </a>
+	<a style="cursor:pointer" onClick="printBasket()"> stampaj </a>
+	<a id="sazminjkoID" style="cursor:pointer" onClick="expandBasket()"> rasiri </a>
 </div>
 
 <br><br><br>asd<br><br>asd<br><br>asd<br><br><br><br>asd<br><br><br>asd<br><br><br><br>

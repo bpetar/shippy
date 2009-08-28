@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<script language="JavaScript" type="text/javascript" src="js/js.js"></script>
 </head>
-<body bgcolor="#111111">
+<body onUnload="onUnload()" bgcolor="#111111">
 
 <div style="color:#EEEEEE; background-color:#111111; border: 1px solid red;">
 <br><br>
