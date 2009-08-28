@@ -40,7 +40,7 @@ a:active {
 	color: #FFFF44
 }
 
-.transparent
+.transparent09
 {
    filter:alpha(opacity=90); 
    -moz-opacity: 0.8; 
@@ -61,6 +61,16 @@ td.productNameCell{
 	color:#99EE99; 
 	background-color:#111111;
 	font-size:16px;
+}
+#floatingBasketMinimized{
+	position: fixed; 
+	left: 0px; 
+	bottom: 30px;
+	border: 1px solid red; 
+	color:#99EE99; 
+	background-color:#111111;
+	font-size:16px;
+	display:none; 
 }
 #menudiv{
 	width:20%;
