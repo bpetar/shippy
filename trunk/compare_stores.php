@@ -8,7 +8,7 @@
 	<br><?echo($storeid)?><br>
 	<br><br>Dodaj prodavnicu za poredjenje cena: 
 	
-	<select name="stores" name="Odaberi prodavnicu" onChange="addStore(this,<?echo($storeid)?>)">
+	<select name="stores" name="Odaberi prodavnicu" onChange="addStore(this)">
 	  <option value="-1">Odaberi prodavnicu</option>
 	  <?$mcity = new city();
 		$mcities = $mcity->getAllCities();

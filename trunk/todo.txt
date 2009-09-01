@@ -5,13 +5,12 @@ cenjovnik todo
 + nema fix total of NAN
 + row highlight on mouse over
 - add store to compare
+- save spisak to cookie
 - login
 - load users
-- save spisak
 - category of favorite products
 
 pitanja:
-? kako namestiti da levi (meni) div bude fixne sirine, a desni (content) da se rasiri na koliko ima ekrana. bez tabele.
 ? basket div se inicijalno siri da obuhvati sadrzaj, kad poraste na odredjenu visinu, ja mu promenim property height="500px", i overflow:'auto', tako da se pojavi skrol bar, i div vise ne raste nego zadrzava velicinu pa se skroluje ... problem je vratiti na staro stanje!!! kad se obrisu proizvodi, i div moze da bude manji, na sta postaviti parametar height pa da se obavija oko sadrzaja?
 ? refresh strane nece da pocisti sadrzaj u input text field-ovima. imal leka?
 ? ie6 ne podnosi fixed atribut na divu, pa ga bljucne negde na strani. kako srediti?

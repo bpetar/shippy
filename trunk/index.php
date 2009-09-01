@@ -16,7 +16,6 @@
 	include("header.php");
 ?>
 	
-	
 	<div id="middWrapp" style="border: 1px solid;">
 
 		<div id="menudiv">
@@ -32,6 +31,8 @@
 		include_once("content.php");
 	} else if($act=="show_store") {
 		include_once("content_store.php");
+	} else if($act=="compare_stores") {
+		include_once("compare_stores.php");
 	}
 ?>
 		</div>
