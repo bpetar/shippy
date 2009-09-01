@@ -25,6 +25,16 @@ function selectText(pthis)
 	pthis.select();
 }
 
+function addStore(select,ids)
+{
+	var storeid = select.options[select.selectedIndex].value;
+	if(storeid >= 0)
+	{
+		var url = "index.php?act=compare_stores&storeid=" + ids + "," + storeid;
+		window.location = url;
+	}
+}
+
 function expandBasket()
 {
 	document.getElementById("floatingBasket").style.display = 'block';
