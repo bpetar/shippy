@@ -4,6 +4,7 @@
 	$image_big = $_POST["image_big"];
 	$ptype = $_POST["ptype"];
 	$bar_code = $_POST["bar_code"];
+	$typeid = $_GET["typeid"];
 
 	$act = $_GET["act"];
 
