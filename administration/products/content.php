@@ -63,11 +63,16 @@
 		<div class="pgsright">
 			<select id="ptype" name="ptype">
 		<?
-			$ptype = new ptype();
-			$ptypes = $ptype->getAllTypes();
+			$ptypesel = new ptype();
+			$ptypes = $ptypesel->getAllTypes();
 			foreach($ptypes as $item){
 				$selected = "";
-				if($item['id'] == $product->type){
+				if($product->type == null && $typeid == $item['id'])
+				{
+					$selected = "selected";
+				}
+				else if($item['id'] == $product->type)
+				{
 					$selected = "selected";
 				}
 				echo("<option value=\"".$item['id']."\" ".$selected.">".$item['name']."</option>\n");

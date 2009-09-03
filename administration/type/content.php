@@ -36,6 +36,6 @@
 	</div>
 	<div class="pgsitem">
 		<div class="pgsleft"></div>
-		<div class="pgsright"><br><input type="submit" value="UNOS" onClick="javascript: clickSubmit('index.php', 'unosforma', '?act=<?=$act?>');" /></div>
+		<div class="pgsright"><br><input type="submit" value="UNOS" onClick="javascript: clickSubmit('index.php', 'unosforma', '?act=<?=$act?>&id=<?=$ptype->id?>');" /></div>
 	</div>
 </form>
