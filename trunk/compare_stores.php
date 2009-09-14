@@ -1,11 +1,18 @@
-<br>Prodavnica 
+<br>Prodavnice 
 <?
 	/*get store info*/
-	$mstore = new store();
-	$mstore->getById($storeid);
-	if($mstore->id) {
-	echo($mstore->name); echo(", "); echo($mstore->contact); echo(" "); echo($mstore->url); ?>
-	<br><?echo($storeid)?><br>
+	
+	
+	$idArray = parseIDs($storeid);
+	$storesArray = new array[$idArray.length];
+	for(int $idIndex=0; $idIndex<$idArray.length; $idIndex++)
+	{
+		$mstore = new store();
+		$mstore->getById($idArray[$idIndex]);
+		$storesArray[$idIndex] = $mstore;
+		echo($mstore->name); echo(", ");
+	}
+
 	<br><br>Dodaj prodavnicu za poredjenje cena: 
 	
 	<select name="stores" name="Odaberi prodavnicu" onChange="addStore(this)">
