@@ -82,6 +82,28 @@ function emptyBasket()
 	basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi nema proizvoda';
 }
 
+function emptyMultiBasket(numStores)
+{
+	var basketTable = document.getElementById("BasketTableID");
+	while(basketTable.rows.length > 2)
+	{
+		//remove yellow marker in main table
+		var rowIDstring = basketTable.rows[1].id;
+		var strArray = rowIDstring.split("_");
+		var productRowID = strArray[1];
+		document.getElementById("amount_"+productRowID).value = 0;
+		document.getElementById("amount_"+productRowID).style.backgroundColor="#DDDDDD";
+		//delete the basket row
+		basketTable.deleteRow(1);
+	}
+	var basketTableMinimized = document.getElementById("BasketTableMinimizedID");
+	for(i=0; i<numStores; i++) {
+		basketTable.rows[1].getElementsByTagName('td')[1+i].innerHTML = '0.00';
+		basketTableMinimized.rows[2].getElementsByTagName('td')[1+i].innerHTML = '0.00';
+	}
+	basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi nema proizvoda';
+}
+
 function saveBasket()
 {
 	alert("Spisak za prodavnicu je sacuvan!");
@@ -89,7 +111,14 @@ function saveBasket()
 
 function printBasket()
 {
-	alert("Spisak za prodavnicu ce da bude otstampan ovde!");
+	document.getElementById("cssprint").href = 'css/print_style2.css';
+	document.getElementById("css1").href = 'css/print_style.css';
+}
+
+function unprintBasket()
+{
+	document.getElementById("cssprint").href = 'css/style.css';
+	document.getElementById("css1").href = 'css/style.css';
 }
 
 function removeSearchTable()
@@ -271,17 +300,13 @@ function CategoryRowClick(pthis)
 }
 
 //create table cell with given text, fontsize and color
-function createBasketCell(text, fontsize, fontcolor)
+function createBasketCell(text, className)
 {
 	var td = document.createElement("td");
 	var cellText = document.createTextNode(text);
 	td.appendChild(cellText);
-	td.style.margin = "-1";
-	td.style.paddingLeft = 3;
-	td.style.paddingRight = 3;
 	td.border = "0";
-	td.style.color = fontcolor;
-	td.style.fontSize = fontsize;
+	td.className  = className;
 	return td;
 }
 
@@ -308,6 +333,54 @@ function removeFromBasket(rowIndex)
 		var total = parseFloat(totalCell.innerHTML) - price;
 		totalCell.innerHTML = total.toFixed(2);
 		basketTableMinimized.rows[1].getElementsByTagName('td')[1].innerHTML = total.toFixed(2);
+	}
+
+	if(amount>1) {
+		//just reduce the amount by 1
+		amountCell.innerHTML = amount-1;
+	} else {
+		//remove given row
+		basketTableBody.removeChild(basketRow);
+		
+		var numProducts = basketTable.rows.length-2;
+		if(numProducts == 0) {
+			basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi nema proizvoda';
+		} else if (numProducts == 1){
+			basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi ima ' + 1 + ' proizvod';
+		} else {
+			basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi ima ' + numProducts + ' proizvoda';
+		}
+		
+		//remove yellow marker
+		document.getElementById("amount_"+rowIndex).value = 0;
+		document.getElementById("amount_"+rowIndex).style.backgroundColor="#DDDDDD";
+	}
+}
+
+
+//Remove 1 product from basket
+function removeFromBasketMulti(rowIndex, numStores)
+{
+	var basketTableMinimized = document.getElementById("BasketTableMinimizedID");
+	var basketTable = document.getElementById("BasketTableID");
+	
+	//get price from given row
+	var basketRow = document.getElementById("basketRow_"+rowIndex);
+	var price = parseFloat(basketRow.getElementsByTagName('td')[1].innerHTML);
+	var amountCell = basketRow.getElementsByTagName('td')[2+numStores];
+	var amount = parseInt(amountCell.innerHTML);
+	
+	//get total cell
+	var basketTableBody = document.getElementById("BasketTableBodyID");
+	var basketRows = basketTableBody.getElementsByTagName('tr');
+	var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1];
+	
+	//subtract price from total amout
+	if(price)
+	{
+		var total = parseFloat(totalCell.innerHTML) - price;
+		totalCell.innerHTML = total.toFixed(2);
+		basketTableMinimized.rows[2].getElementsByTagName('td')[1].innerHTML = total.toFixed(2);
 	}
 
 	if(amount>1) {
@@ -390,16 +463,121 @@ function addToBasket(pthis)
 		row.id = 'basketRow_'+rowID;
 		
 		//add Product cell to the list selectedTable
-		row.appendChild(createBasketCell(productName, '12px', '#EEEEEE'));
+		row.appendChild(createBasketCell(productName, 'productBasketCellText'));
 		//add Price cell to the selectedTable
-		row.appendChild(createBasketCell(price, '12px', '#EE8888'));
+		row.appendChild(createBasketCell(price, 'productBasketCellNumber'));
 		//add Amount cell to the selectedTable
-		row.appendChild(createBasketCell(amount, '12px', '#EEEEEE'));
+		row.appendChild(createBasketCell(amount, 'productBasketCellText'));
 				
 		//add "remove" link
-		var td = createBasketCell(" - ", '12px', '#888888')
+		var td = createBasketCell(" - ", 'productBasketCellText')
+		td.className  = 'noprint';
 		td.style.cursor = 'pointer';
 		td.onclick = function(){removeFromBasket(rowID)};
+		row.appendChild(td);
+		
+		//update amount in table line
+		document.getElementById("amount_"+rowID).value = amount;
+		document.getElementById("amount_"+rowID).style.backgroundColor="#FFFF44";
+		
+		var numProducts = basketTable.rows.length-2;
+		if(numProducts == 1) {
+			basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi ima ' + 1 + ' proizvod';
+		} else {
+			basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi ima ' + numProducts + ' proizvoda';
+		}
+	}
+}
+
+
+
+//Adds product to the basket table
+function addToBasketMulti(pthis, numStores)
+{
+	//alert(numStores);
+	var basketTableMinimized = document.getElementById("BasketTableMinimizedID");
+	var basketTableBody = document.getElementById("BasketTableBodyID");
+	var basketRows = basketTableBody.getElementsByTagName('tr');
+	var found = false;
+	var rowID = pthis.id;
+	var amount = parseInt(document.getElementById("kolicina_"+rowID).value);
+	
+	//get product price and name
+	var productCellID = "productCell_" + rowID;
+	var productName = clearString(document.getElementById(productCellID).innerHTML);
+
+	for(var stNum = 0; stNum<numStores; stNum++) {
+		var priceCellID = "priceCell_" + stNum + "_" + rowID;
+		var price = document.getElementById(priceCellID).innerHTML;
+
+		//add price to total amout
+		if(!price.match("nema"))
+		{
+			var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1+stNum];
+			var total = parseFloat(totalCell.innerHTML) + amount*parseFloat(price);
+			totalCell.innerHTML = total.toFixed(2);
+			basketTableMinimized.rows[2].getElementsByTagName('td')[1+stNum].innerHTML = total.toFixed(2);
+		}
+	}
+	
+	//find if added product already exists in the selectedTable
+	var productFromSelectedList;
+	for(index = 0; index < basketRows.length; index++)
+	{
+		productFromSelectedList = clearString(basketRows[index].getElementsByTagName('td')[0].innerHTML);
+
+		if (productName == productFromSelectedList)
+		{
+			var totalAmount = parseInt(basketRows[index].getElementsByTagName('td')[2+numStores].innerHTML);
+			//product already exists in the basket, just increase the amount
+			totalAmount += amount;
+			basketRows[index].getElementsByTagName('td')[2+numStores].innerHTML = totalAmount;
+			document.getElementById("amount_"+rowID).value = totalAmount;
+			found = true;
+			break;
+		}
+	}
+	
+	if(basketRows.length>30)
+	{
+		var divBasket = document.getElementById("floatingBasket");
+		divBasket.style.height = 530;
+		divBasket.style.overflow = 'auto';
+	}
+	
+	if(!found)
+	{
+		//create new product row, insert it at the bottom of table (but above last table line with TOTAL amount)
+		var basketTable = document.getElementById("BasketTableID");
+		var row = basketTable.insertRow(basketTable.rows.length-1);
+		row.id = 'basketRow_'+rowID;
+		
+		//add Product cell to the list selectedTable
+		row.appendChild(createBasketCell(productName, 'productBasketCellText'));
+		var cheapest = 100000000000;
+		var cheapestStore = 'Svugde isto';
+		for(var stNum = 0; stNum<numStores; stNum++) 
+		{
+			var priceCellID = "priceCell_" + stNum + "_" + rowID;
+			var price = document.getElementById(priceCellID).innerHTML;
+			if((cheapest > price)&&(!price.match("nema")))
+			{
+				cheapest = price;
+				cheapestStore = basketRows[0].getElementsByTagName('td')[1+stNum].innerHTML;
+			}
+			//add Price cell to the selectedTable
+			row.appendChild(createBasketCell(price, 'productBasketCellNumber'));
+		}
+		//add Cheapest cell to the selectedTable
+		row.appendChild(createBasketCell(cheapestStore, 'productBasketCellText'));
+		//add Amount cell to the selectedTable
+		row.appendChild(createBasketCell(amount, 'productBasketCellText'));
+				
+		//add "remove" link
+		var td = createBasketCell(" - ", 'productBasketCellText')
+		td.className  = 'noprint';
+		td.style.cursor = 'pointer';
+		td.onclick = function(){removeFromBasketMulti(rowID,numStores)};
 		row.appendChild(td);
 		
 		//update amount in table line

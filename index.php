@@ -16,7 +16,7 @@
 	include("header.php");
 ?>
 	
-	<div id="middWrapp" style="border: 1px solid;">
+	<div id="middWrapp">
 
 		<div id="menudiv">
 <?

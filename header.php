@@ -4,12 +4,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Cenjovnik</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link id="css1" rel="stylesheet" type="text/css" href="css/style.css">
+	<link id="cssprint" media="print" rel="stylesheet" type="text/css" href="css/style.css"/>
 	<script language="JavaScript" type="text/javascript" src="js/js.js"></script>
 </head>
-<body onUnload="onUnload()" bgcolor="#111111">
+<body onUnload="onUnload()"">
 
-<div style="color:#EEEEEE; background-color:#111111; border: 1px solid red;">
+<div id="headDiv">
+
 <br><br>
 header, velika slika 
 <br><br>
