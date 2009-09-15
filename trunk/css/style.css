@@ -14,7 +14,9 @@ a:hover {
 
 a:active {
 }
-
+#totalCell{
+	color:#99FF99;
+}
 #middWrapp{
 	padding:0px;
 	margin:0px;
@@ -50,6 +52,23 @@ a:active {
 	font-weight:bold;
 	color: #115511
 }
+.productBasketCellText
+{
+	margin:-1;
+	padding-left: 3px;
+	padding-right: 3px;
+	color: #EE0000;
+	font-size: 12px;
+}
+
+.productBasketCellNumber
+{
+	margin:-1;
+	padding-left: 3px;
+	padding-right: 3px;
+	color: #EE8888;
+	font-size: 12px;
+}
 
 .transparent09
 {
@@ -82,6 +101,11 @@ td.productNameCell{
 	background-color:#111111;
 	font-size:16px;
 	display:none; 
+}
+#infodiv{
+}
+#printinfodiv{
+	display:none;
 }
 #menudiv{
 	width:250px;

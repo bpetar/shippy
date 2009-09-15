@@ -1,30 +1,35 @@
-<br>Prodavnica 
+<br>
 <?
 	/*get store info*/
 	$mstore = new store();
 	$mstore->getById($storeid);
-	if($mstore->id) {
-	echo($mstore->name); echo(", "); echo($mstore->contact); echo(" "); echo($mstore->url); ?>
-	<br><?echo($storeid)?><br>
+	if($mstore->id) {?>
+	
+	<div id="printinfodiv">
+		<a onMouseOver="this.style.color = '#FF0000'" onMouseOut="this.style.color = '#000000'" style="cursor:pointer" OnClick="unprintBasket()"> << Nazad </a>
+	</div>
+		
+	<div id="infodiv">
+	<?echo("Prodavnica ".$mstore->name.", ".$mstore->contact." ".$mstore->url); ?>
 	<br><br>Dodaj prodavnicu za poredjenje cena: 
 	
-	<select name="stores" name="Odaberi prodavnicu" onChange="addStore(this,<?echo($storeid)?>)">
-	  <option value="-1">Odaberi prodavnicu</option>
-	  <?$mcity = new city();
-		$mcities = $mcity->getAllCities();
-		for ($i = 0; $i<sizeof($mcities);$i++){?>
-			<OPTGROUP LABEL="<?echo ($mcities[$i]["name"]);?>"> 
-			<?$mstore = new store();
-			$mstores = $mstore->getAllStoresByCity($mcities[$i]["id"]);
-			/*get all stores under city name*/
-			for ($j = 0; $j<sizeof($mstores);$j++){
-				if($storeid!=$mstores[$j]["id"]) {?>
-					<option value="<?echo ($mstores[$j]["id"]);?>"><?echo ($mstores[$j]["name"]);?></option>
+		<select name="stores" name="Odaberi prodavnicu" onChange="addStore(this,<?echo($storeid)?>)">
+		  <option value="-1">Odaberi prodavnicu</option>
+		  <?$mcity = new city();
+			$mcities = $mcity->getAllCities();
+			for ($i = 0; $i<sizeof($mcities);$i++){?>
+				<OPTGROUP LABEL="<?echo ($mcities[$i]["name"]);?>"> 
+				<?$mstore = new store();
+				$mstores = $mstore->getAllStoresByCity($mcities[$i]["id"]);
+				/*get all stores under city name*/
+				for ($j = 0; $j<sizeof($mstores);$j++){
+					if($storeid!=$mstores[$j]["id"]) {?>
+						<option value="<?echo ($mstores[$j]["id"]);?>"><?echo ($mstores[$j]["name"]);?></option>
+					<?}?>
 				<?}?>
+				</OPTGROUP>
 			<?}?>
-			</OPTGROUP>
-		<?}?>
-	</select>
+		</select>
 
 	
 	<br><br><a href="index.php?act=show_cities"> << back Home </a> <br><br>
@@ -32,12 +37,12 @@
 	<input type="text" id="searchBox" onclick="selectText(this)" value="Unesi rec za pretragu"> 
 	<input type="button" style="cursor:pointer" value="Trazi" onMouseDown="waitCursor(this)" onMouseUp="searchOnClick(this)">
 	<input type="button" style="cursor:pointer" value="Ponisti" onClick="removeSearchTable()">
-
 	<br><br>
-
+	</div>
+	
 	<div id="searchTableDiv">
 	</div><br><br>
-
+<div id="storeTable">
 	<table id="StoreTableID" width="100%"><tbody id="StoreTableBodyID">
 	
 	<?//get prices by store, divided into type sections
@@ -74,32 +79,29 @@
 		<?}?>
 	</font></td></tr><? $rowcount++;
 	}?>
-</tbody></table>
-
-
-<div id="storeTable" align=center></div>
+</tbody></table></div>
 
 <div class="transparent09" id="floatingBasket">
 	Sadrzaj Korpe
 	<table id="BasketTableID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyID">
 	<tr>
-	<td style="padding-left:3; padding-right:3; min-width:200;" nowrap>Proizvod</td>
-	<td style="padding-left:3; padding-right:3;">Cena</td>
-	<td style="padding-left:3; padding-right:3;">Kol</td>
-	<td style="padding-left:3; padding-right:3;">-</td>
+	<td class='printBold' style="padding-left:3; padding-right:3; min-width:200;" nowrap>Proizvod</td>
+	<td class='printBold' style="padding-left:3; padding-right:3;">Cena</td>
+	<td class='printBold' style="padding-left:3; padding-right:3;">Kol</td>
+	<td class='noprint' style="padding-left:3; padding-right:3;">-</td>
 	</tr>
 	<tr>
-	<td style="padding-left:3; padding-right:3;">TOTAL</td>
-	<td style="padding-left:3; padding-right:3; color:#99FF99" colspan="3">0.00</td>
+	<td id="totalText" style="padding-left:3; padding-right:3;">TOTAL</td>
+	<td id="totalCell" style="padding-left:3; padding-right:3;" colspan="3">0.00</td>
 	</tr>
 	</tbody></table>
-	<a style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
-	<a style="cursor:pointer" onClick="emptyBasket()"> izprazni </a>
-	<a style="cursor:pointer" onClick="printBasket()"> stampaj </a>
-	<a id="sazminjkoID" style="cursor:pointer" onClick="collapseBasket()"> sazmi </a>
+	<a class='noprint' style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
+	<a class='noprint' style="cursor:pointer" onClick="emptyBasket()"> izprazni </a>
+	<a class='noprint' style="cursor:pointer" onClick="printBasket()"> stampaj </a>
+	<a class='noprint' id="sazminjkoID" style="cursor:pointer" onClick="collapseBasket()"> sazmi </a>
 </div>
 
-<div class="transparent09" id="floatingBasketMinimized">
+<div class='noprint' class="transparent09" id="floatingBasketMinimized">
 	
 	<table id="BasketTableMinimizedID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyMinimizedID">
 	<tr>
@@ -115,7 +117,6 @@
 	<a style="cursor:pointer" onClick="printBasket()"> stampaj </a>
 	<a id="sazminjkoID" style="cursor:pointer" onClick="expandBasket()"> rasiri </a>
 </div>
-
-<br><br><br>asd<br><br>asd<br><br>asd<br><br><br><br>asd<br><br><br>asd<br><br><br><br>
+<br>
 
 <?} else {?> nije pronadjena<?}?>
