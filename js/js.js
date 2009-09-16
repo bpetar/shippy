@@ -104,9 +104,69 @@ function emptyMultiBasket(numStores)
 	basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi nema proizvoda';
 }
 
-function saveBasket()
+function setCookie(c_name,value,expiredays)
 {
-	alert("Spisak za prodavnicu je sacuvan!");
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate()+expiredays);
+	document.cookie=c_name+ "=" + escape(value) + ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+}
+
+function getCookie(c_name)
+{
+	if (document.cookie.length>0)
+  {
+  	c_start=document.cookie.indexOf(c_name + "=");
+  	if (c_start!=-1)
+    { 
+    	c_start=c_start + c_name.length+1; 
+    	c_end=document.cookie.indexOf(";",c_start);
+    	if (c_end==-1) c_end=document.cookie.length;
+    		return unescape(document.cookie.substring(c_start,c_end));
+    } 
+  }
+	return "";
+}
+
+function saveBasketToCookie()
+{
+	var cookieValue = "";
+	var amountCookieValue = "";
+	for (var i=1; i< selectedItemListTable.rows.length; i++)
+	{
+		if(i!=1)
+		{
+			cookieValue += ",";
+			amountCookieValue += ",";
+		}
+		var rowID = selectedItemListTable.rows[i].id;
+		// "selected_" + productID
+		var idArray = rowID.split("_");
+		var ID = idArray[1];
+		cookieValue += ID;
+		
+		amountCookieValue += selectedItemListTable.rows[i].getElementsByTagName('td')[1].innerHTML;
+	}
+	
+	if(selectedItemListTable.rows.length>1)
+	{
+		setCookie("items",cookieValue,45);
+		setCookie("amounts",amountCookieValue,45);
+	}
+}
+
+function loadBasketFromCookie()
+{
+	var items = getCookie('items');
+	var amounts = getCookie('amounts');
+	if (items!=null && items!="" && items!="undefined")
+	{
+		var itemIDs = items.split(",");
+		var itemAmounts = amounts.split(",");
+		for(var a=0; a < itemIDs.length; a++)
+		{
+			feedBasket(itemIDs[a],itemAmounts[a]);
+		}
+	}
 }
 
 function printBasket()
