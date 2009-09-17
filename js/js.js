@@ -131,26 +131,31 @@ function saveBasketToCookie()
 {
 	var cookieValue = "";
 	var amountCookieValue = "";
-	for (var i=1; i< selectedItemListTable.rows.length; i++)
+	var basketTable = document.getElementById("BasketTableID");
+	
+	//var row = basketTable.insertRow(basketTable.rows.length-1);
+	for (var i=1; i< basketTable.rows.length-1; i++)
 	{
 		if(i!=1)
 		{
 			cookieValue += ",";
 			amountCookieValue += ",";
 		}
-		var rowID = selectedItemListTable.rows[i].id;
-		// "selected_" + productID
+		var rowID = basketTable.rows[i].id;
 		var idArray = rowID.split("_");
 		var ID = idArray[1];
 		cookieValue += ID;
-		
-		amountCookieValue += selectedItemListTable.rows[i].getElementsByTagName('td')[1].innerHTML;
+		var rowCells = basketTable.rows[i].getElementsByTagName('td');
+		amountCookieValue += rowCells[rowCells.length-2].innerHTML;
 	}
 	
-	if(selectedItemListTable.rows.length>1)
+	if(basketTable.rows.length>1)
 	{
+		
 		setCookie("items",cookieValue,45);
 		setCookie("amounts",amountCookieValue,45);
+		
+		alert("Korpa je sacuvana u kolacicu na vasem racunaru." + cookieValue);
 	}
 }
 
@@ -171,8 +176,8 @@ function loadBasketFromCookie()
 
 function printBasket()
 {
-	document.getElementById("cssprint").href = 'css/print_style2.css';
-	document.getElementById("css1").href = 'css/print_style.css';
+	document.getElementById("cssprint").href = 'css/print_style1.css';
+	document.getElementById("css1").href = 'css/print_preview_style.css';
 }
 
 function unprintBasket()
