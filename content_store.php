@@ -102,6 +102,7 @@
 	<a class='noprint' style="cursor:pointer" onClick="saveBasketToCookie()"> sacuvaj </a>
 	<a class='noprint' style="cursor:pointer" onClick="emptyBasket()"> izprazni </a>
 	<a class='noprint' style="cursor:pointer" onClick="printBasket()"> stampaj </a>
+	<a class='noprint' style="cursor:pointer" onClick="sendBasket()"> posalji </a>
 	<a class='noprint' id="sazminjkoID" style="cursor:pointer" onClick="collapseBasket()"> sazmi </a>
 </div>
 
@@ -119,6 +120,7 @@
 	<a style="cursor:pointer" onClick="saveBasketToCookie()"> sacuvaj </a>
 	<a style="cursor:pointer" onClick="emptyBasket()"> izprazni </a>
 	<a style="cursor:pointer" onClick="printBasket()"> stampaj </a>
+	<a style="cursor:pointer" onClick="sendBasket()"> posalji </a>
 	<a id="sazminjkoID" style="cursor:pointer" onClick="expandBasket()"> rasiri </a>
 </div>
 <br>

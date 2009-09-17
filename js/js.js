@@ -155,7 +155,7 @@ function saveBasketToCookie()
 		setCookie("items",cookieValue,45);
 		setCookie("amounts",amountCookieValue,45);
 		
-		alert("Korpa je sacuvana u kolacicu na vasem racunaru." + cookieValue);
+		alert("Korpa je sacuvana \nu kolacicu na vasem racunaru." + cookieValue);
 	}
 }
 
@@ -172,6 +172,28 @@ function loadBasketFromCookie()
 			feedBasket(itemIDs[a],itemAmounts[a]);
 		}
 	}
+}
+
+function sendBasket()
+{
+	var message = "Evo mog spiska:\n\n";
+	var basketTable = document.getElementById("BasketTableID");
+	
+	//var row = basketTable.insertRow(basketTable.rows.length-1);
+	for (var i=1; i< basketTable.rows.length-1; i++)
+	{
+		var rowCells = basketTable.rows[i].getElementsByTagName('td');
+		var product = rowCells[0].innerHTML;
+		var amount = rowCells[rowCells.length-2].innerHTML;
+		var line = product + "  " + amount + "\n";
+		message += line;
+	}
+	var total = basketTable.rows[basketTable.rows.length-1].getElementsByTagName('td')[1].innerHTML;
+	message += "TOTAL: " 
+	message += total;
+	
+	self.location="mailto:mojasnajka91@gmail.com?subject=Spisak za prodavnicu&body="+message;
+
 }
 
 function printBasket()
