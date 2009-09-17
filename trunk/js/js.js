@@ -183,16 +183,20 @@ function sendBasket()
 	for (var i=1; i< basketTable.rows.length-1; i++)
 	{
 		var rowCells = basketTable.rows[i].getElementsByTagName('td');
-		var product = rowCells[0].innerHTML;
+		var product = clearString(rowCells[0].innerHTML);
 		var amount = rowCells[rowCells.length-2].innerHTML;
-		var line = product + "  " + amount + "\n";
-		message += line;
+		//var line = product + "  " + amount;
+		message += product;
+		message += "     ";
+		message += amount;
+		message += "kom.";
 	}
 	var total = basketTable.rows[basketTable.rows.length-1].getElementsByTagName('td')[1].innerHTML;
-	message += "TOTAL: " 
+	message += "\n\nTOTAL: " 
 	message += total;
 	
-	self.location="mailto:mojasnajka91@gmail.com?subject=Spisak za prodavnicu&body="+message;
+	alert(message);
+	self.location="mailto:mojasnajka91@gmail.com?subject=Spisak za prodavnicu&body="+encodeURIComponent(message);
 
 }
 
