@@ -6,7 +6,11 @@
 	if($mstore->id) {?>
 	
 	<div id="printinfodiv">
-		<a onMouseOver="this.style.color = '#FF0000'" onMouseOut="this.style.color = '#000000'" style="cursor:pointer" OnClick="unprintBasket()"> << Nazad </a>
+		<h2>Print Preview</h2>
+		*Napomena: Jos uvek ste na istoj internet strani, pritisak na Back dugme vaseg browsera ce vas vratiti dve strane u nazad. Koristite dugme 'Close' za gasenje print preview prozora.
+		<br><br>
+		<input type="button" style="cursor:pointer" value="Close" onMouseDown="unprintBasket()">
+		<input type="button" style="cursor:pointer" value="Print" onMouseDown="window.print()">
 	</div>
 		
 	<div id="infodiv">
@@ -67,7 +71,7 @@
 		for ($j = 0; $j<sizeof($prices);$j++){ $rowcount++;?>
 			<tr id="<?echo($rowcount);?>">
 			<td class="productNameCell" id="productCell_<?echo($rowcount);?>"> 
-			<?echo ($prices[$j]["pname"]); ?>
+			<?echo ($prices[$j]["pname"]);?>
 			</td>
 			<td class="productNameCell" id="priceCell_<?echo($rowcount);?>">
 			<?if(!$prices[$j]["price"]) {echo("nema");}else{echo($prices[$j]["price"]);}?>
@@ -82,7 +86,7 @@
 </tbody></table></div>
 
 <div class="transparent09" id="floatingBasket">
-	Sadrzaj Korpe
+	<div class='noprint'>Sadrzaj Korpe</div>
 	<table id="BasketTableID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyID">
 	<tr>
 	<td class='printBold' style="padding-left:3; padding-right:3; min-width:200;" nowrap>Proizvod</td>
@@ -95,13 +99,13 @@
 	<td id="totalCell" style="padding-left:3; padding-right:3;" colspan="3">0.00</td>
 	</tr>
 	</tbody></table>
-	<a class='noprint' style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
+	<a class='noprint' style="cursor:pointer" onClick="saveBasketToCookie()"> sacuvaj </a>
 	<a class='noprint' style="cursor:pointer" onClick="emptyBasket()"> izprazni </a>
 	<a class='noprint' style="cursor:pointer" onClick="printBasket()"> stampaj </a>
 	<a class='noprint' id="sazminjkoID" style="cursor:pointer" onClick="collapseBasket()"> sazmi </a>
 </div>
 
-<div class='noprint' class="transparent09" id="floatingBasketMinimized">
+<div class="transparent09" class='noprint' id="floatingBasketMinimized">
 	
 	<table id="BasketTableMinimizedID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyMinimizedID">
 	<tr>
@@ -112,7 +116,7 @@
 	<td style="padding-left:3; padding-right:3; color:#99FF99">0.00</td>
 	</tr>
 	</tbody></table>
-	<a style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
+	<a style="cursor:pointer" onClick="saveBasketToCookie()"> sacuvaj </a>
 	<a style="cursor:pointer" onClick="emptyBasket()"> izprazni </a>
 	<a style="cursor:pointer" onClick="printBasket()"> stampaj </a>
 	<a id="sazminjkoID" style="cursor:pointer" onClick="expandBasket()"> rasiri </a>

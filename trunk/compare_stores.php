@@ -8,7 +8,11 @@
 		$storesArray = array();?>
 		
 		<div id="printinfodiv">
-		<a style="cursor:pointer" OnClick="unprintBasket()"> << Nazad </a>
+			<h2>Print Preview</h2>
+			*Napomena: Jos uvek ste na istoj internet strani, pritisak na Back dugme vaseg browsera ce vas vratiti dve strane u nazad. Koristite dugme 'Close' za gasenje print preview prozora.
+			<br><br>
+			<input type="button" style="cursor:pointer" value="Close" onMouseDown="unprintBasket()">
+			<input type="button" style="cursor:pointer" value="Print" onMouseDown="window.print()">
 		</div>
 		
 		<div id="infodiv">
@@ -109,7 +113,7 @@
 </tbody></table></div>
 
 <div class="transparent09" id="floatingBasket">
-		Sadrzaj Korpe
+		<div class='noprint'>Sadrzaj Korpe</div>
 		<table id="BasketTableID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyID">
 		<tr>
 		<td class='printBold' style="padding-left:3; padding-right:3; min-width:200;" nowrap>Proizvod</td>
@@ -127,13 +131,13 @@
 		<?}?>
 		</tr>
 		</tbody></table>
-		<a class='noprint' style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
+		<a class='noprint' style="cursor:pointer" onClick="saveBasketToCookie()"> sacuvaj </a>
 		<a class='noprint' style="cursor:pointer" onClick="emptyMultiBasket(<?echo(sizeof($idArray));?>)"> izprazni </a>
 		<a class='noprint' style="cursor:pointer" onClick="printBasket()"> stampaj </a>
 		<a class='noprint' id="sazminjkoID" style="cursor:pointer" onClick="collapseBasket()"> sazmi </a>
 </div>
 
-<div class="transparent09" id="floatingBasketMinimized">
+<div class='noprint' class="transparent09" id="floatingBasketMinimized">
 		
 		<table id="BasketTableMinimizedID" cellspacing="0" cellpadding="0" width="100%"><tbody id="BasketTableBodyMinimizedID">
 		<tr>
@@ -152,7 +156,7 @@
 		<?}?>
 		</tr>
 		</tbody></table>
-		<a style="cursor:pointer" onClick="saveBasket()"> sacuvaj </a>
+		<a style="cursor:pointer" onClick="saveBasketToCookie()"> sacuvaj </a>
 		<a style="cursor:pointer" onClick="emptyMultiBasket(<?echo(sizeof($idArray));?>)"> izprazni </a>
 		<a style="cursor:pointer" onClick="printBasket()"> stampaj </a>
 		<a id="sazminjkoID" style="cursor:pointer" onClick="expandBasket()"> rasiri </a>
@@ -162,5 +166,12 @@
 <?} else {?> nisu pronadjene<?}?>
 
 <?
-/*href="<?echo($_SERVER["REQUEST_URI"]."&print=true");?>"*/
+/*
+Korisni parcadi koda:
+
+href="<?echo($_SERVER["REQUEST_URI"]."&print=true");?>"
+
+<a onMouseOver="this.style.color = '#FF0000'" onMouseOut="this.style.color = '#000000'" style="cursor:pointer" OnClick="unprintBasket()"> << Nazad </a>
+
+*/
 ?>

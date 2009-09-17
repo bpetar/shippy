@@ -1,0 +1,64 @@
+body{
+
+}
+#middWrapp{
+}
+.noprint
+{
+	display:none;
+}
+.productBasketCellText
+{
+	margin:-1;
+	padding-left: 3px;
+	padding-right: 3px;
+	color: #000000;
+	font-size: 12pt;
+}
+.productBasketCellNumber
+{
+	margin:-1;
+	padding-left: 3px;
+	padding-right: 3px;
+	color: #000000;
+	font-size: 12pt;
+}
+.printBold
+{
+	font-weight:bold;
+}
+#printinfodiv{
+	display:none;
+}
+#totalCell{
+	color:#000000;
+	font-size:16pt;
+}
+#totalText{
+	color:#000000;
+	font-size:16pt;
+}
+#storeTable{
+	display:none; 
+}
+#floatingBasket{
+	float:left;
+}
+#floatingBasketMinimized{
+	display:none; 
+}
+#headdiv{
+	display:none; 
+}
+#infodiv{
+	display:none;
+}
+#menudiv{
+	display:none; 
+}
+#contdiv{
+	left: 0px; 
+}
+#foot{
+	display:none; 
+}
