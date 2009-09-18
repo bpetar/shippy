@@ -149,19 +149,15 @@ function saveBasketToCookie()
 		var rowCells = basketTable.rows[i].getElementsByTagName('td');
 		amountCookieValue += rowCells[rowCells.length-2].innerHTML;
 	}
-	
-	if(basketTable.rows.length>1)
-	{
-		
-		setCookie("items",cookieValue,45);
-		setCookie("amounts",amountCookieValue,45);
-		
-		alert("Korpa je sacuvana \nu kolacicu na vasem racunaru." + cookieValue);
-	}
+
+	setCookie("items",cookieValue,45);
+	setCookie("amounts",amountCookieValue,45);
+	alert("Korpa je sacuvana \nu kolacicu na vasem racunaru." + cookieValue);
 }
 
 function loadBasketFromCookie()
 {
+	emptyBasket();
 	var items = getCookie('items');
 	var amounts = getCookie('amounts');
 	if (items!=null && items!="" && items!="undefined")
@@ -520,6 +516,86 @@ function removeFromBasketMulti(rowIndex, numStores)
 		//remove yellow marker
 		document.getElementById("amount_"+rowIndex).value = 0;
 		document.getElementById("amount_"+rowIndex).style.backgroundColor="#DDDDDD";
+	}
+}
+function feedBasket(rowID, amount)
+{
+	var basketTableMinimized = document.getElementById("BasketTableMinimizedID");
+	var basketTableBody = document.getElementById("BasketTableBodyID");
+	var basketRows = basketTableBody.getElementsByTagName('tr');
+	var found = false;
+	
+	//get product price and name
+	var productCellID = "productCell_" + rowID;
+	var priceCellID = "priceCell_" + rowID;
+	var productName = clearString(document.getElementById(productCellID).innerHTML);
+	var price = document.getElementById(priceCellID).innerHTML;
+
+	//add price to total amout
+	if(!price.match("nema"))
+	{
+		var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1];
+		var total = parseFloat(totalCell.innerHTML) + amount*parseFloat(price);
+		totalCell.innerHTML = total.toFixed(2);
+		basketTableMinimized.rows[1].getElementsByTagName('td')[1].innerHTML = total.toFixed(2);
+	}
+
+	//find if added product already exists in the selectedTable
+	var productFromSelectedList;
+	for(index = 0; index < basketRows.length; index++)
+	{
+		productFromSelectedList = clearString(basketRows[index].getElementsByTagName('td')[0].innerHTML);
+
+		if (productName == productFromSelectedList)
+		{
+			var totalAmount = parseInt(basketRows[index].getElementsByTagName('td')[2].innerHTML);
+			//product already exists in the basket, just increase the amount
+			totalAmount += amount;
+			basketRows[index].getElementsByTagName('td')[2].innerHTML = totalAmount;
+			document.getElementById("amount_"+rowID).value = totalAmount;
+			found = true;
+			break;
+		}
+	}
+	
+	if(basketRows.length>30)
+	{
+		var divBasket = document.getElementById("floatingBasket");
+		divBasket.style.height = 530;
+		divBasket.style.overflow = 'auto';
+	}
+	
+	if(!found)
+	{
+		//create new product row, insert it at the bottom of table (but above last table line with TOTAL amount)
+		var basketTable = document.getElementById("BasketTableID");
+		var row = basketTable.insertRow(basketTable.rows.length-1);
+		row.id = 'basketRow_'+rowID;
+		
+		//add Product cell to the list selectedTable
+		row.appendChild(createBasketCell(productName, 'productBasketCellText'));
+		//add Price cell to the selectedTable
+		row.appendChild(createBasketCell(price, 'productBasketCellNumber'));
+		//add Amount cell to the selectedTable
+		row.appendChild(createBasketCell(amount, 'productBasketCellText'));
+				
+		//add "remove" link
+		var td = createBasketCell(" - ", 'productBasketCellText')
+		td.className  = 'noprint';
+		td.style.cursor = 'pointer';
+		td.onclick = function(){removeFromBasket(rowID)};
+		row.appendChild(td);
+		
+		//update amount in table line
+		document.getElementById("amount_"+rowID).value = amount;
+		document.getElementById("amount_"+rowID).style.backgroundColor="#FFFF44";
+		
+		var numProducts = basketTable.rows.length-2;
+		if(numProducts == 1) {
+			basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi ima ' + 1 + ' proizvod';
+		} else {
+			basketTableMinimized.rows[0].getElementsByTagName('td')[0].innerHTML = 'U korpi ima ' + numProducts + ' proizvoda';
+		}
 	}
 }
 
