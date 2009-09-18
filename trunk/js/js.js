@@ -8,7 +8,8 @@ function test1(pthis)
 //removes html tags from string (replaces things like &amp; with just '&')
 function clearString(str)
 {
-	return str.replace(/\&amp;/g,'&');
+	var newstr = str.replace(/^\s+|\s+$/g,"");
+	return newstr.replace(/\&amp;/g,'&');
 }
 
 function waitCursor(pthis)
@@ -179,29 +180,55 @@ function sendBasket()
 	var message = "Evo mog spiska:\n\n";
 	var basketTable = document.getElementById("BasketTableID");
 	
+	var longestName = 0;
+	var longestPrice = 0;
+	
+	for (var i=1; i< basketTable.rows.length-1; i++)
+	{
+		var rowCells = basketTable.rows[i].getElementsByTagName('td');
+		var product = clearString(rowCells[0].innerHTML);
+		var price = clearString(rowCells[1].innerHTML);
+		
+		if(longestName < product.length)
+		{
+			longestName = product.length;
+		}
+		if(longestPrice < price.length)
+		{
+			longestPrice = price.length;
+		}
+	}
+	
 	//var row = basketTable.insertRow(basketTable.rows.length-1);
 	for (var i=1; i< basketTable.rows.length-1; i++)
 	{
 		var rowCells = basketTable.rows[i].getElementsByTagName('td');
 		var product = clearString(rowCells[0].innerHTML);
+		var price = clearString(rowCells[1].innerHTML);
 		var amount = rowCells[rowCells.length-2].innerHTML;
-		//var line = product + "  " + amount;
 		message += product;
-		message += "     ";
+		for(var space=0; space < longestName-product.length; space++)
+		{
+			message += " ";
+		}
+		message += "\t";
 		message += amount;
-		message += "kom.";
+		message += "kom.\n";
 	}
 	var total = basketTable.rows[basketTable.rows.length-1].getElementsByTagName('td')[1].innerHTML;
-	message += "\n\nTOTAL: " 
+	message += "\nTOTAL: " 
 	message += total;
-	
-	alert(message);
-	self.location="mailto:mojasnajka91@gmail.com?subject=Spisak za prodavnicu&body="+encodeURIComponent(message);
+
+	self.location="mailto:?&subject=Spisak za prodavnicu&body="+encodeURIComponent(message);
 
 }
 
 function printBasket()
 {
+	if(document.getElementById("floatingBasket").style.display == 'none')
+	{
+		expandBasket();
+	}
 	document.getElementById("cssprint").href = 'css/print_style1.css';
 	document.getElementById("css1").href = 'css/print_preview_style.css';
 }
