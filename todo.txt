@@ -24,5 +24,5 @@ pitanja:
 
 verzija 2.0: 
 - unapredi search: vise unetih termina da izbacuju rezultate ako se pjoavljuju bilo gde u imenu proizvoda, npr "Imlek mleko 1L" daje sva imlek mleka od jedne litre cak i ako se prozivod zove ispretumbano ("Mleko 1L sterilno, Imlek").
-
+- ubaciti opcije za pravna lica (popusti na kolicinuu, uslovi placanja,...)
 - polje cena u tabeli, da ne bude samo jedan broj, nego niz brojeva iz kojih ce moci da se rekreira istorija cena za dati proizvod od pocetka vodjenja evidencije, kad je i za koliko poskupelo. Znaci sem nove cene, treba i datume zabeleziti kad su unesene.
