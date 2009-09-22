@@ -22,7 +22,6 @@ var HIGHLIGHT_ROW_COLOR = '#CCCCCC';
 var ROW_COLOR = '#AAAAAA';
 
 
-
 function selectText(pthis)
 {
 	pthis.select();
