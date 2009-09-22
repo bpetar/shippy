@@ -4,10 +4,12 @@ cenjovnik todo
 + search
 + nema fix total of NAN
 + row highlight on mouse over
-- add store to compare
-- save spisak to cookie
-- ubaci u korpu svoj proizvod
-
++ add store to compare
++ save spisak to cookie
++ ubaci u korpu svoj proizvod
+- beo sajt
+- ie support
+- dodati supermarkete i srediti podatke o prodavnicama i proizvodima
 
 - login
 - load users
@@ -26,3 +28,5 @@ verzija 2.0:
 - unapredi search: vise unetih termina da izbacuju rezultate ako se pjoavljuju bilo gde u imenu proizvoda, npr "Imlek mleko 1L" daje sva imlek mleka od jedne litre cak i ako se prozivod zove ispretumbano ("Mleko 1L sterilno, Imlek").
 - ubaciti opcije za pravna lica (popusti na kolicinuu, uslovi placanja,...)
 - polje cena u tabeli, da ne bude samo jedan broj, nego niz brojeva iz kojih ce moci da se rekreira istorija cena za dati proizvod od pocetka vodjenja evidencije, kad je i za koliko poskupelo. Znaci sem nove cene, treba i datume zabeleziti kad su unesene.
+- prebacivanje sa jedne na vise prodavnica da sacuva sadrzaj korpe ako je u toku pazar
+- automatsko sortiranje proizvoda u korpi po kategorijama da se lakse kupuje u prodavnici
