@@ -59,11 +59,16 @@
 		<input type="button" style="cursor:pointer" value="Ponisti" onClick="removeSearchTable()">
 
 		<br><br>
-		</div>
+		
 		
 		<div id="searchTableDiv">
 		</div><br><br>
 
+		<input type=text id="newProductText" size="81" onclick="selectText(this)" value="Ovde mozete dodati proizvoljnu stvar na spisak">
+		<input type=text id="newPriceText" size="6" onclick="selectText(this)" value="Cena">
+		<input type=text id="newAmountText" size="2" onclick="selectText(this)" value="Kol">
+		<input type="button" style="cursor:pointer" value=" + " onMouseDown="AddUserInputToBasket()">
+		</div><br><br>
 		
 
 		<div id="storeTable">
