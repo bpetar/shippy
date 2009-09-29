@@ -80,11 +80,11 @@
 			<td class="productNameCell" id="productCell_<?echo($rowcount);?>"> 
 			<?echo ($prices[$j]["pname"]);?>
 			</td>
-			<td class="productNameCell" id="priceCell_<?echo($rowcount);?>">
+			<td class="productNameCell" id="priceCell_0_<?echo($rowcount);?>">
 			<?if(!$prices[$j]["price"]) {echo("nema");}else{echo($prices[$j]["price"]);}?>
 			</td>
 			<td id="productCell"><input type="text" size="2" width="30" value="1" id="kolicina_<?echo($rowcount);?>"></td>
-			<td id="productCell"><input type="button" style="cursor:pointer" value=" + " onclick="addToBasket(this)" id="<?echo($rowcount);?>"></td>
+			<td id="productCell"><input type="button" style="cursor:pointer" value=" + " onclick="addToBasketMulti(this,1)" id="<?echo($rowcount);?>"></td>
 			<td id="productCell"><input type="text" size="2" value="0" disabled="disabled" id="amount_<?echo($rowcount);?>"></td>
 			</tr>
 		<?}?>

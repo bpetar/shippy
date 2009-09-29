@@ -834,7 +834,8 @@ function addToBasketMulti(pthis, numStores)
 			var totalCell = basketRows[basketRows.length-1].getElementsByTagName('td')[1+stNum];
 			var total = parseFloat(totalCell.innerHTML) + amount*parseFloat(price);
 			totalCell.innerHTML = total.toFixed(2);
-			basketTableMinimized.rows[2].getElementsByTagName('td')[1+stNum].innerHTML = total.toFixed(2);
+			
+			basketTableMinimized.rows[basketTableMinimized.rows.length-1].getElementsByTagName('td')[1+stNum].innerHTML = total.toFixed(2);
 		}
 	}
 	
@@ -846,10 +847,11 @@ function addToBasketMulti(pthis, numStores)
 
 		if (productName == productFromSelectedList)
 		{
-			var totalAmount = parseInt(basketRows[index].getElementsByTagName('td')[2+numStores].innerHTML);
+			var cells = basketRows[index].getElementsByTagName('td');
+			var totalAmount = parseInt(cells[cells.length-2].innerHTML);
 			//product already exists in the basket, just increase the amount
 			totalAmount += amount;
-			basketRows[index].getElementsByTagName('td')[2+numStores].innerHTML = totalAmount;
+			cells[cells.length-2].innerHTML = totalAmount;
 			document.getElementById("amount_"+rowID).value = totalAmount;
 			found = true;
 			break;
@@ -862,6 +864,8 @@ function addToBasketMulti(pthis, numStores)
 		divBasket.style.height = 530;
 		divBasket.style.overflow = 'auto';
 	}
+	
+	
 	
 	if(!found)
 	{
@@ -886,8 +890,11 @@ function addToBasketMulti(pthis, numStores)
 			//add Price cell to the selectedTable
 			row.appendChild(createBasketCell(price, 'productBasketCellNumber'));
 		}
-		//add Cheapest cell to the selectedTable
-		row.appendChild(createBasketCell(cheapestStore, 'productBasketCellText'));
+		if(numStores>1) 
+		{
+			//add Cheapest cell to the selectedTable
+			row.appendChild(createBasketCell(cheapestStore, 'productBasketCellText'));
+		}
 		//add Amount cell to the selectedTable
 		row.appendChild(createBasketCell(amount, 'productBasketCellText'));
 				
