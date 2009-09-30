@@ -67,7 +67,7 @@
 		<input type=text id="newProductText" size="81" onclick="selectText(this)" value="Ovde mozete dodati proizvoljnu stvar na spisak">
 		<input type=text id="newPriceText" size="6" onclick="selectText(this)" value="Cena">
 		<input type=text id="newAmountText" size="2" onclick="selectText(this)" value="Kol">
-		<input type="button" style="cursor:pointer" value=" + " onMouseDown="AddUserInputToBasket()">
+		<input type="button" style="cursor:pointer" value=" + " onMouseDown="AddUserInputToBasket(<?echo(sizeof($idArray));?>)">
 		</div><br><br>
 		
 
